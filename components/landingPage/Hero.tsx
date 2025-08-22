@@ -16,6 +16,7 @@ export default function Hero() {
                 priority={true}
                 width={900}
                 height={900}
+                loading="eager"
             />
             <Image
                 className={styles.heroImageMagic}
@@ -24,6 +25,7 @@ export default function Hero() {
                 priority={true}
                 width={900}
                 height={900}
+                loading="eager"
             />
 
             <div className={styles.contentContainer}>
