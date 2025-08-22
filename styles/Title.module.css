@@ -1,0 +1,7 @@
+.title {
+    color: var(--text-color-main);
+    font-weight: 800;
+    font-size: var(--text-l);
+    margin: 0;
+    text-transform: uppercase;
+}

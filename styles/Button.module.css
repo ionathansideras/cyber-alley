@@ -1,0 +1,31 @@
+.button {
+    background-color: var(--bg-color-main);
+    border: none;
+    text-decoration: none;
+    color: black;
+    font-size: var(--text-m);
+    font-family: var(--tektur);
+    padding: 10px 30px;
+    cursor: pointer;
+    clip-path: polygon(85% 0, 100% 35%, 100% 100%, 15% 100%, 0 65%, 0 0);
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    gap: 5px;
+    transition: background-color var(--transition-duration);
+    text-transform: uppercase;
+}
+
+.button svg {
+    width: 20px;
+    height: 20px;
+    transition: transform var(--transition-duration);
+}
+
+.button:hover {
+    background-color: var(--bg-color-main-hover);
+}
+
+.button:hover svg {
+    transform: translateX(5px);
+}

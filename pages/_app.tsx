@@ -1,15 +1,16 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
-import { Orbitron } from "next/font/google";
+import { Tektur } from "next/font/google";
 
-const orbitron = Orbitron({
+const tektur = Tektur({
     subsets: ["latin"],
     weight: ["400", "800"],
+    variable: "--tektur",
 });
 
 export default function App({ Component, pageProps }: AppProps) {
     return (
-        <main className={orbitron.className}>
+        <main className={tektur.className}>
             <Component {...pageProps} />
         </main>
     );

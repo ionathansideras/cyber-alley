@@ -1,17 +1,22 @@
 :root {
     --bg-color-main: #dbff29ff;
+    --bg-color-main-hover: rgb(234, 255, 127);
     --bg-color-secondary: #181818;
     --bg-color-black: #000000;
 
-    --text-color-main: #f5fed5;
-    --text-color-secondary: #ccd4ae;
+    --text-color-main: #fcfff0;
+    --text-color-secondary: #c6c7c0;
+    --text-color-dark: rgb(92, 92, 92);
+    --text-s: 12px;
+    --text-m: 17px;
+    --text-l: 60px;
 
     --border-dark: #404244;
     --border-colorful: linear-gradient(
         150deg,
         rgba(200, 200, 200, 1) 0%,
         rgba(200, 200, 200, 1) 26%,
-        rgba(153, 230, 67, 1) 100%
+        rgba(219, 255, 41) 100%
     );
 
     --space-s: 10px;
@@ -21,9 +26,7 @@
     --break-s: 400px;
     --break-m: 900px;
 
-    --text-s: 12px;
-    --text-m: 16px;
-    --text-l: 20px;
+    --transition-duration: 0.3s;
 
     --clip-path-1: polygon(
         0 10%,
