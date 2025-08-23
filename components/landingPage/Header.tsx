@@ -23,11 +23,9 @@ export default function Header() {
 
             if (scrolledAmount > prevScrolledAmountRef.current + buffer) {
                 prevScrolledAmountRef.current = scrolledAmount;
-
                 setShowHeader(false);
             } else if (scrolledAmount < prevScrolledAmountRef.current) {
                 prevScrolledAmountRef.current = scrolledAmount;
-
                 setShowHeader(true);
             }
         }

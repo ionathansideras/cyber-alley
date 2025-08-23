@@ -54,7 +54,13 @@ export default function Hero() {
                     </Button>
                 </div>
             </div>
-            <FloatingIcon small bottom="20px" right="0px" rotate={45}>
+            <FloatingIcon
+                small
+                bottom="20px"
+                right="0px"
+                rotate={45}
+                extraStyles={styles.floatingIcon}
+            >
                 <svg
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"

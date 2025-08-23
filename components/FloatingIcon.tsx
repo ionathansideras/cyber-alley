@@ -10,6 +10,7 @@ export default function FloatingIcon({
     medium,
     children,
     rotate,
+    extraStyles,
 }: {
     top?: string;
     left?: string;
@@ -19,12 +20,13 @@ export default function FloatingIcon({
     medium?: boolean;
     rotate?: number;
     children: React.ReactNode;
+    extraStyles: string;
 }) {
     return (
         <div
             className={`${style.icon} ${small ? style.small : ""} ${
                 medium ? style.medium : ""
-            }`}
+            } ${extraStyles}`}
             style={{
                 top: top,
                 right: right,
