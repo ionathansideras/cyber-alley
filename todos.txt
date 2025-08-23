@@ -1,0 +1,2 @@
+1 - add header
+3 - make clip path for mobile and desktop hero

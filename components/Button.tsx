@@ -9,7 +9,7 @@ export default function Button({
 }: {
     children: React.ReactNode;
     href?: string;
-    icon: React.ReactNode;
+    icon?: React.ReactNode;
 }) {
     if (href) {
         return (

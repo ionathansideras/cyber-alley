@@ -3,9 +3,10 @@
 body {
     max-width: 1900px;
     overflow-x: hidden;
-    padding: 0 var(--space-m);
     margin: 0 auto;
     background-color: var(--bg-color-secondary);
+
+    padding-bottom: 500px;
 }
 
 body::selection {

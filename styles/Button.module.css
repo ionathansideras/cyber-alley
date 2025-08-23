@@ -4,7 +4,7 @@
     text-decoration: none;
     color: black;
     font-size: var(--text-m);
-    font-family: var(--tektur);
+    font-family: inherit;
     padding: 10px 30px;
     cursor: pointer;
     clip-path: polygon(85% 0, 100% 35%, 100% 100%, 15% 100%, 0 65%, 0 0);
