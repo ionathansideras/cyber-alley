@@ -7,25 +7,26 @@ export default function Header() {
     const [onTop, setOnTop] = useState(true);
     const [showHeader, setShowHeader] = useState(true);
     const [openMenu, setOpenMenu] = useState(false);
-    const prevScrollYRef = useRef(0);
+    const prevScrolledAmountRef = useRef(0);
 
     useEffect(() => {
         function handleScroll() {
-            const scrollY = window.scrollY;
+            const scrolledAmount = window.scrollY;
 
-            if (scrollY === 0) {
+            if (scrolledAmount === 0) {
                 setOnTop(true);
-            } else if (scrollY > 10) {
+                setShowHeader(true);
+            } else if (scrolledAmount > 10) {
                 setOnTop(false);
             }
 
-            if (scrollY < prevScrollYRef.current) {
-                setShowHeader(true);
-            } else {
+            if (scrolledAmount > prevScrolledAmountRef.current) {
                 setShowHeader(false);
+            } else if (scrolledAmount < prevScrolledAmountRef.current) {
+                setShowHeader(true);
             }
 
-            prevScrollYRef.current = scrollY;
+            prevScrolledAmountRef.current = scrolledAmount;
         }
 
         window.addEventListener("scroll", handleScroll);
