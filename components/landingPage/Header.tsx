@@ -12,7 +12,7 @@ export default function Header() {
     useEffect(() => {
         function handleScroll() {
             const scrolledAmount = window.scrollY;
-            const buffer = 200;
+            const buffer = 100;
 
             if (scrolledAmount === 0) {
                 setOnTop(true);
