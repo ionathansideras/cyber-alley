@@ -117,3 +117,24 @@
     width: 0%;
     left: 50%;
 }
+
+@media (max-width: 900px) {
+    .nav a {
+        display: none;
+    }
+
+    .nav button {
+        display: none;
+    }
+}
+
+@media (max-width: 500px) {
+    .brand h1 {
+        transform: translateX(50px);
+        font-size: 25px;
+    }
+
+    .scrolled h1 {
+        transform: translateX(0px);
+    }
+}
