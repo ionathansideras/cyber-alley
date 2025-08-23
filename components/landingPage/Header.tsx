@@ -12,6 +12,7 @@ export default function Header() {
     useEffect(() => {
         function handleScroll() {
             const scrolledAmount = window.scrollY;
+            const buffer = 200;
 
             if (scrolledAmount === 0) {
                 setOnTop(true);
@@ -20,13 +21,15 @@ export default function Header() {
                 setOnTop(false);
             }
 
-            if (scrolledAmount > prevScrolledAmountRef.current) {
+            if (scrolledAmount > prevScrolledAmountRef.current + buffer) {
+                prevScrolledAmountRef.current = scrolledAmount;
+
                 setShowHeader(false);
             } else if (scrolledAmount < prevScrolledAmountRef.current) {
+                prevScrolledAmountRef.current = scrolledAmount;
+
                 setShowHeader(true);
             }
-
-            prevScrolledAmountRef.current = scrolledAmount;
         }
 
         window.addEventListener("scroll", handleScroll);
