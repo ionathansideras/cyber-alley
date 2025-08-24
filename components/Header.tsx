@@ -1,12 +1,10 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
-import styles from "@/styles/landingPage/Header.module.css";
-import Button from "../Button";
+import { useEffect, useRef } from "react";
+import styles from "@/styles/Header.module.css";
+import Button from "./Button";
 
 export default function Header() {
-    const [onTop, setOnTop] = useState(true);
-    const [showHeader, setShowHeader] = useState(true);
-    const [openMenu, setOpenMenu] = useState(false);
+    const headerRef = useRef<HTMLHeadingElement | null>(null);
     const prevScrolledAmountRef = useRef(0);
 
     useEffect(() => {
@@ -15,18 +13,18 @@ export default function Header() {
             const buffer = 100;
 
             if (scrolledAmount === 0) {
-                setOnTop(true);
-                setShowHeader(true);
+                headerRef.current?.classList.remove("headerHidden");
+                headerRef.current?.classList.remove("headerFilled");
             } else if (scrolledAmount > 10) {
-                setOnTop(false);
+                headerRef.current?.classList.add("headerFilled");
             }
 
             if (scrolledAmount > prevScrolledAmountRef.current + buffer) {
                 prevScrolledAmountRef.current = scrolledAmount;
-                setShowHeader(false);
+                headerRef.current?.classList.add("headerHidden");
             } else if (scrolledAmount < prevScrolledAmountRef.current) {
                 prevScrolledAmountRef.current = scrolledAmount;
-                setShowHeader(true);
+                headerRef.current?.classList.remove("headerHidden");
             }
         }
 
@@ -37,21 +35,19 @@ export default function Header() {
         };
     }, []);
 
+    function handleOpenHamburger(e: React.MouseEvent<HTMLDivElement>) {
+        e.currentTarget.classList.toggle("hamburgerOpen");
+    }
+
     return (
-        <header
-            className={`${styles.header} ${!onTop ? styles.scrolled : ""} ${
-                !showHeader ? styles.hidden : ""
-            }`}
-        >
+        <header ref={headerRef} className={`${styles.header}`}>
             <div className={styles.brand}>
                 <h1>cyber alley</h1>
             </div>
             <nav className={styles.nav}>
                 <div
-                    className={`${styles.hamburgerMenu} ${
-                        openMenu ? styles.open : ""
-                    }`}
-                    onClick={() => setOpenMenu((prev) => !prev)}
+                    className={styles.hamburgerMenu}
+                    onClick={handleOpenHamburger}
                 >
                     <span></span>
                     <span></span>

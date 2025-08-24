@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Hero from "@/components/landingPage/Hero";
-import Header from "@/components/landingPage/Header";
+import Header from "@/components/Header";
 import Mission from "@/components/landingPage/Mission";
 import HowItWorks from "@/components/landingPage/HowItWorks";
 

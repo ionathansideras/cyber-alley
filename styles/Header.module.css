@@ -12,6 +12,18 @@
     transition: all var(--transition-duration);
 }
 
+.header:global(.headerHidden) {
+    transform: translateY(-200%);
+}
+
+.header:global(.headerFilled) {
+    background-color: var(--bg-color-black);
+}
+
+.header:global(.headerFilled) h1 {
+    transform: translateX(0);
+}
+
 .brand {
     display: flex;
     color: white;
@@ -31,18 +43,6 @@
     align-items: center;
     gap: 25px;
     margin-right: var(--space-m);
-}
-
-.scrolled {
-    background-color: var(--bg-color-black);
-}
-
-.scrolled h1 {
-    transform: translateX(0px);
-}
-
-.hidden {
-    transform: translateY(-200%);
 }
 
 .hamburgerMenu {
@@ -92,27 +92,27 @@
     top: 25px;
 }
 
-.hamburgerMenu.open span:nth-child(1) {
+.hamburgerMenu:global(.hamburgerOpen) span:nth-child(1) {
     top: 15px;
     width: 0%;
     left: 50%;
 }
 
-.hamburgerMenu.open span:nth-child(2) {
+.hamburgerMenu:global(.hamburgerOpen) span:nth-child(2) {
     -webkit-transform: rotate(45deg);
     -moz-transform: rotate(45deg);
     -o-transform: rotate(45deg);
     transform: rotate(45deg);
 }
 
-.hamburgerMenu.open span:nth-child(3) {
+.hamburgerMenu:global(.hamburgerOpen) span:nth-child(3) {
     -webkit-transform: rotate(-45deg);
     -moz-transform: rotate(-45deg);
     -o-transform: rotate(-45deg);
     transform: rotate(-45deg);
 }
 
-.hamburgerMenu.open span:nth-child(4) {
+.hamburgerMenu:global(.hamburgerOpen) span:nth-child(4) {
     top: 15px;
     width: 0%;
     left: 50%;
@@ -132,9 +132,5 @@
     .brand h1 {
         transform: translateX(50px);
         font-size: 25px;
-    }
-
-    .scrolled h1 {
-        transform: translateX(0px);
     }
 }
