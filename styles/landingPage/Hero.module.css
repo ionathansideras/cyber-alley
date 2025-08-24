@@ -40,6 +40,7 @@
     left: var(--space-l);
     right: var(--space-m);
     bottom: var(--space-l);
+    z-index: 1;
 }
 
 .contentContainer div {
@@ -58,6 +59,7 @@
     color: var(--text-color-dark);
     font-size: var(--text-s);
     right: -110px;
+    z-index: 0;
     transform: rotate(-90deg);
 }
 
@@ -78,6 +80,10 @@
     }
     .clipPathBorder {
         clip-path: var(--clip-path-1-m);
+    }
+
+    .contentContainer {
+        left: var(--space-m);
     }
 }
 
