@@ -1,0 +1,142 @@
+.gridContainer {
+    display: grid;
+    margin-top: var(--space-m);
+    padding: 0 var(--space-m);
+    gap: var(--space-m);
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: calc(100% - var(--space-m) * 2);
+}
+
+.gridContainer > article {
+    position: relative;
+    height: 500px;
+    z-index: 20;
+}
+
+.gridContainer > article > .articleContainer {
+    display: flex;
+    width: calc(100% - var(--space-m) * 2);
+    height: 100%;
+    padding: 0 var(--space-m);
+}
+
+.article1 {
+    grid-column: span 4;
+    margin: 2px;
+    background: var(--border-colorful);
+    clip-path: var(--clip-path-bento-1);
+}
+
+.article1 > .articleContainer {
+    clip-path: var(--clip-path-bento-1-border);
+    background-color: var(--bg-color-secondary);
+}
+
+.article2 {
+    background: var(--border-colorful);
+    grid-column: span 2;
+    clip-path: var(--clip-path-bento-2);
+}
+
+.article2 > .articleContainer {
+    clip-path: var(--clip-path-bento-2-border);
+    /* background-color: black; */
+    background-color: var(--bg-color-secondary);
+}
+
+.article3 {
+    background-color: var(--bg-color-main);
+    clip-path: var(--clip-path-bento-3);
+    grid-column: span 2;
+}
+
+.article1Image {
+    width: 40%;
+}
+
+.article1Image img {
+    width: 100%;
+    object-fit: contain;
+    transform: scale(1.2);
+}
+
+.article1Content {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.article2Content {
+    margin: 0 auto;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 10;
+}
+
+.article3Content {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.article2Image {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media (max-width: 900px) {
+    .article2 {
+        grid-column: span 4;
+    }
+
+    .article3 {
+        grid-column: span 4;
+    }
+
+    .article1Image {
+        position: absolute;
+        width: 90%;
+        z-index: -1;
+    }
+
+    .article1Image img {
+        object-fit: cover;
+        opacity: 0.4;
+    }
+
+    .article1Content {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .article2Content {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .article1Content h2 {
+        text-align: center;
+    }
+
+    .article1Content p {
+        text-align: center;
+    }
+
+    .article2Content h2 {
+        text-align: center;
+    }
+
+    .article2Content p {
+        text-align: center;
+    }
+}

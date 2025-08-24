@@ -6,6 +6,20 @@
     text-transform: uppercase;
 }
 
+.blackColor {
+    color: black !important;
+}
+
+.center {
+    text-align: center;
+}
+
+@media (max-width: 900px) {
+    .title {
+        font-size: var(--title-m);
+    }
+}
+
 @media (max-width: 500px) {
     .title {
         font-size: var(--title-s);

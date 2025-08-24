@@ -1,2 +1,7 @@
-1 - add header
-3 - make clip path for mobile and desktop hero
+make header re-usable 
+
+mission section
+    bento grid
+    add css gradient
+    add css grid left as background
+    react parallex?

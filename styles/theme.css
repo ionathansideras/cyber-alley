@@ -26,7 +26,8 @@
 
     --space-s: 10px;
     --space-m: 20px;
-    --space-l: 50px;
+    --space-l: 40px;
+    --space-xl: 100px;
 
     --transition-duration: 0.3s;
 
@@ -44,7 +45,8 @@
         95% 100%,
         0 100%
     );
-    --clip-path-1-shadow-l: polygon(
+
+    --clip-path-1-border-l: polygon(
         calc(0% + 2px) calc(10% + 2px),
         calc(5% + 2px) calc(0% + 2px),
         calc(35% - 2px) calc(0% + 2px),
@@ -70,7 +72,7 @@
         0 100%
     );
 
-    --clip-path-1-shadow-m: polygon(
+    --clip-path-1-border-m: polygon(
         calc(0% + 2px) calc(10% + 2px),
         calc(10% + 2px) calc(0% + 2px),
         calc(85% - 2px) calc(0% + 2px),
@@ -79,5 +81,65 @@
         calc(100% - 2px) calc(90% - 2px),
         calc(90% - 2px) calc(100% - 2px),
         calc(0% + 2px) calc(100% - 2px)
+    );
+
+    /* Original Bento 1 */
+    --clip-path-bento-1: polygon(
+        20% 0%,
+        80% 0%,
+        100% 0,
+        100% 100%,
+        80% 100%,
+        20% 100%,
+        0 100%,
+        0% 20%
+    );
+
+    /* Shadow */
+    --clip-path-bento-1-border: polygon(
+        calc(20% + 2px) calc(0% + 2px),
+        calc(80% - 2px) calc(0% + 2px),
+        calc(100% - 2px) calc(0% + 2px),
+        calc(100% - 2px) calc(100% - 2px),
+        calc(80% - 2px) calc(100% - 2px),
+        calc(20% + 2px) calc(100% - 2px),
+        calc(0% + 2px) calc(100% - 2px),
+        calc(0% + 2px) calc(20% + 2px)
+    );
+
+    /* Original Bento 2 */
+    --clip-path-bento-2: polygon(
+        20% 0%,
+        80% 0%,
+        100% 0,
+        100% 80%,
+        80% 100%,
+        20% 100%,
+        0 100%,
+        0 0
+    );
+
+    /* Shadow */
+    --clip-path-bento-2-border: polygon(
+        calc(20% + 2px) calc(0% + 2px),
+        calc(80% - 2px) calc(0% + 2px),
+        calc(100% - 2px) calc(0% + 2px),
+        calc(100% - 2px) calc(80% - 2px),
+        calc(80% - 2px) calc(100% - 2px),
+        calc(20% + 2px) calc(100% - 2px),
+        calc(0% + 2px) calc(100% - 2px),
+        calc(0% + 2px) calc(0% + 2px)
+    );
+
+    /* Original Bento 3 */
+    --clip-path-bento-3: polygon(
+        20% 0%,
+        80% 0%,
+        100% 20%,
+        100% 100%,
+        80% 100%,
+        20% 100%,
+        0% 80%,
+        0 0
     );
 }

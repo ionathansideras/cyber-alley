@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Hero from "@/components/landingPage/Hero";
 import Header from "@/components/landingPage/Header";
+import Mission from "@/components/landingPage/Mission";
+import HowItWorks from "@/components/landingPage/HowItWorks";
 
 export default function Home() {
     return (
@@ -14,6 +16,8 @@ export default function Home() {
             </Head>
             <Header />
             <Hero />
+            <Mission />
+            <HowItWorks />
         </>
     );
 }

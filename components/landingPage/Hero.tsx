@@ -7,7 +7,7 @@ import FloatingIcon from "../FloatingIcon";
 
 export default function Hero() {
     return (
-        <section className={styles.heroContainer}>
+        <section className={styles.heroContainer} id="hero">
             <div className={styles.clipPathBorder}></div>
             <Image
                 className={styles.heroImage}
@@ -29,11 +29,13 @@ export default function Hero() {
             />
 
             <div className={styles.contentContainer}>
-                <Title>Welcome To Cyber Alley</Title>
+                <Title>Build What&#8217;s Next in Cyber Alley</Title>
                 <div>
                     <Content>
-                        Here you will find the Tech Event <br /> you dreamed
-                        about
+                        Discover, host, and join <strong>tech events</strong>{" "}
+                        that level up your skills,
+                        <br /> expand your network, and spark real
+                        collaboration.
                     </Content>
                     <Button
                         href="/events"
@@ -66,15 +68,16 @@ export default function Hero() {
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                 >
-                    {" "}
                     <path
                         d="M7 3H3v4h4V3zm0 14H3v4h4v-4zM17 3h4v4h-4V3zm4 14h-4v4h4v-4zM8 8h2v2H8V8zm4 2h-2v4H8v2h2v-2h4v2h2v-2h-2v-4h2V8h-2v2h-2z"
                         fill="#dbff29ff"
-                    />{" "}
+                    />
                 </svg>
             </FloatingIcon>
 
-            <p className={styles.decorText}>2025 - made for devs by devs</p>
+            <p className={styles.decorText}>
+                2025 — For developers, from developers
+            </p>
         </section>
     );
 }

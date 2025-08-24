@@ -1,0 +1,11 @@
+.gradient {
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    background-color: transparent;
+    background-image: radial-gradient(
+        circle closest-side at center,
+        rgba(219, 255, 41, 0.3) -10%,
+        rgba(153, 230, 67, 0) 100%
+    );
+}

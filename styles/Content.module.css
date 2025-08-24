@@ -3,3 +3,23 @@
     font-weight: 400;
     font-size: var(--text-m);
 }
+
+.center {
+    text-align: center;
+}
+
+.forNewSection {
+    width: 60%;
+}
+
+@media (max-width: 900px) {
+    .forNewSection {
+        width: 80%;
+    }
+}
+
+@media (max-width: 500px) {
+    .forNewSection {
+        width: 90%;
+    }
+}
