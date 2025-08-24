@@ -1,7 +1,5 @@
 make header re-usable 
 
-mission section
-    bento grid
-    add css gradient
-    add css grid left as background
-    react parallex?
+how it works section
+
+footer

@@ -1,10 +1,10 @@
 .gridContainer {
     display: grid;
     margin-top: var(--space-m);
-    padding: 0 var(--space-m);
     gap: var(--space-m);
     grid-template-columns: 1fr 1fr 1fr 1fr;
     width: calc(100% - var(--space-m) * 2);
+    padding: 0 var(--space-m);
 }
 
 .gridContainer > article {
@@ -40,7 +40,6 @@
 
 .article2 > .articleContainer {
     clip-path: var(--clip-path-bento-2-border);
-    /* background-color: black; */
     background-color: var(--bg-color-secondary);
 }
 
@@ -52,6 +51,7 @@
 
 .article1Image {
     width: 40%;
+    pointer-events: none;
 }
 
 .article1Image img {
@@ -84,6 +84,8 @@
 }
 
 .article2Image {
+    pointer-events: none;
+
     position: absolute;
     left: 0px;
     right: 0px;
@@ -93,6 +95,10 @@
 }
 
 @media (max-width: 900px) {
+    .gridContainer {
+        width: 100%;
+        padding: 0;
+    }
     .article2 {
         grid-column: span 4;
     }
