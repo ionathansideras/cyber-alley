@@ -23,13 +23,19 @@ export default function Footer() {
                     <h3>social media</h3>
                     <ul>
                         <li>
-                            <a>Youtube</a>
+                            <a href="https://www.youtube.com/" target="_blank">
+                                Youtube
+                            </a>
                         </li>
                         <li>
-                            <a>Discord</a>
+                            <a href="https://discord.com/" target="_blank">
+                                Discord
+                            </a>
                         </li>
                         <li>
-                            <a>X</a>
+                            <a href="https://x.com/" target="_blank">
+                                X
+                            </a>
                         </li>
                     </ul>
                 </nav>
