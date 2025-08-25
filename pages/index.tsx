@@ -3,6 +3,8 @@ import Hero from "@/components/landingPage/Hero";
 import Header from "@/components/Header";
 import Mission from "@/components/landingPage/Mission";
 import HowItWorks from "@/components/landingPage/HowItWorks";
+import Footer from "@/components/landingPage/Footer";
+import Connect from "@/components/landingPage/Connect";
 
 export default function Home() {
     return (
@@ -18,6 +20,8 @@ export default function Home() {
             <Hero />
             <Mission />
             <HowItWorks />
+            <Connect />
+            <Footer />
         </>
     );
 }

@@ -4,10 +4,13 @@ import Title from "../Title";
 import Content from "../Content";
 import Button from "../Button";
 import FloatingIcon from "../FloatingIcon";
+import Gradient from "../Gradient";
 
 export default function Hero() {
     return (
         <section className={styles.heroContainer} id="hero">
+            <Gradient top="-100px" left="-250px" z={-1} />
+
             <div className={styles.clipPathBorder}></div>
             <Image
                 className={styles.heroImage}

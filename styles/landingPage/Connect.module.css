@@ -1,0 +1,77 @@
+.connectContainer {
+    position: relative;
+    height: 420px;
+    padding: 0 var(--space-m);
+    margin-bottom: var(--space-m);
+    padding-top: var(--space-xl);
+    overflow: hidden; /* keep if you need it */
+}
+
+.connectArticle {
+    position: relative;
+    width: calc(70% - var(--space-m) * 2);
+    height: 90%;
+    margin: 0 var(--space-m);
+    background: var(--border-colorful);
+    clip-path: var(--clip-path-connect);
+}
+
+.connectContent {
+    position: absolute;
+    width: calc(100% - var(--space-m) * 2);
+    height: calc(calc(100% - var(--space-m) * 2));
+    display: flex;
+    align-items: center;
+    padding: var(--space-m);
+    background-color: var(--bg-color-black);
+    clip-path: var(--clip-path-connect-border);
+}
+
+.decor {
+    text-transform: uppercase;
+    color: var(--text-color-dark);
+    position: absolute;
+    right: -85px;
+    font-size: var(--text-s);
+    transform: rotate(-90deg);
+    z-index: -1;
+}
+
+.connectText {
+    display: flex;
+    flex-direction: column;
+}
+
+.connectText div {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.connectText p {
+    margin-right: var(--space-m);
+}
+
+@media (max-width: 900px) {
+    .connectArticle {
+        width: 100%;
+        margin: 0;
+    }
+
+    .connectContainer {
+        height: 500px;
+        margin-bottom: var(--space-xl);
+    }
+
+    .connectArticle p {
+        text-align: center;
+    }
+
+    .connectArticle h2 {
+        text-align: center;
+    }
+
+    .connectText div {
+        justify-content: center;
+    }
+}
