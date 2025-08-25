@@ -15,7 +15,7 @@ export default function BentoGrid() {
                             src="/robot-img.png"
                             width={500}
                             height={600}
-                            alt="robot-image"
+                            alt="robot image"
                         />
                     </div>
                     <div className={styles.article1Content}>
@@ -53,7 +53,7 @@ export default function BentoGrid() {
                         src="/grid.svg"
                         width={500}
                         height={600}
-                        alt="robot-image"
+                        alt="grid background"
                     />
                     <div className={styles.article2Content}>
                         <Title>Host Your Tech Event</Title>

@@ -15,7 +15,7 @@ export default function Hero() {
             <Image
                 className={styles.heroImage}
                 src="/hero.png"
-                alt="hero-image"
+                alt="hero image"
                 priority={true}
                 width={900}
                 height={900}
@@ -24,7 +24,7 @@ export default function Hero() {
             <Image
                 className={styles.heroImageMagic}
                 src="/hero-magic.png"
-                alt="hero-image-magic"
+                alt="hero image magic"
                 priority={true}
                 width={900}
                 height={900}
