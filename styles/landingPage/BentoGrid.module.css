@@ -40,7 +40,7 @@
 
 .article2 > .articleContainer {
     clip-path: var(--clip-path-bento-2-border);
-    background-color: var(--bg-color-secondary);
+    background-color: var(--bg-color-black);
 }
 
 .article3 {
