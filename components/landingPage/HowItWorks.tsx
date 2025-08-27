@@ -65,9 +65,9 @@ export default function HowItWorks() {
                             <Content center>{item.content}</Content>
                             <Image
                                 className={styles.robotBackground}
-                                src={"/robot-img.png"}
-                                width={100}
-                                height={100}
+                                src={"/robot-img.webp"}
+                                width={400}
+                                height={400}
                                 alt="robot background"
                             />
                         </div>

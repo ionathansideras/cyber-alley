@@ -51,11 +51,13 @@
 
 .article1Image {
     width: 40%;
+    height: auto;
     pointer-events: none;
 }
 
-.article1Image img {
+.robotImage {
     width: 100%;
+    height: auto;
     object-fit: contain;
     transform: scale(1.2);
 }
@@ -113,7 +115,7 @@
         z-index: -1;
     }
 
-    .article1Image img {
+    .robotImage {
         object-fit: cover;
         opacity: 0.4;
     }

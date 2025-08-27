@@ -12,9 +12,10 @@ export default function BentoGrid() {
                 <div className={styles.articleContainer}>
                     <div className={styles.article1Image}>
                         <Image
-                            src="/robot-img.png"
+                            className={styles.robotImage}
+                            src="/robot-img.webp"
                             width={500}
-                            height={600}
+                            height={500}
                             alt="robot image"
                         />
                     </div>

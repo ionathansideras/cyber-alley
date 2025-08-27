@@ -16,19 +16,17 @@ export default function Hero() {
                 className={styles.heroImage}
                 src="/hero.png"
                 alt="hero image"
-                priority={true}
+                priority
                 width={900}
                 height={900}
-                loading="eager"
             />
             <Image
                 className={styles.heroImageMagic}
-                src="/hero-magic.png"
+                src="/hero-magic.webp"
                 alt="hero image magic"
-                priority={true}
+                priority
                 width={900}
                 height={900}
-                loading="eager"
             />
 
             <div className={styles.contentContainer}>

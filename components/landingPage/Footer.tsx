@@ -10,8 +10,8 @@ export default function Footer() {
             <Image
                 className={styles.coderImage}
                 src={"/coder.png"}
-                width={400}
-                height={400}
+                width={600}
+                height={600}
                 alt="coder image"
             />
             <div className={styles.footerContentLeft}>
