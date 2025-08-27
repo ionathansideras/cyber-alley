@@ -3,8 +3,8 @@
     height: 420px;
     padding: 0 var(--space-m);
     margin-bottom: var(--space-m);
-    padding-top: var(--space-xl);
-    overflow: hidden; /* keep if you need it */
+    padding-top: var(--space-l);
+    overflow: hidden;
 }
 
 .connectArticle {

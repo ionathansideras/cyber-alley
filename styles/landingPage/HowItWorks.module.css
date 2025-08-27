@@ -5,6 +5,110 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    padding: 0 var(--space-m);
     overflow: hidden;
+}
+
+.chipsContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-l);
+    flex-wrap: wrap;
+
+    width: 100%;
+    padding-bottom: var(--space-xl);
+    padding-top: var(--space-l);
+}
+
+.chipsContainer > div {
+    width: 250px;
+    height: 300px;
+}
+
+.clipPath1 {
+    background: var(--border-colorful);
+    clip-path: var(--clip-path-hiw-1);
+}
+
+.clipPath2 {
+    background: var(--border-colorful);
+    clip-path: var(--clip-path-hiw-2);
+}
+
+.clipPath1 > div {
+    background-color: var(--bg-color-black);
+    clip-path: var(--clip-path-hiw-1-border);
+}
+
+.clipPath2 > div {
+    background-color: var(--bg-color-black);
+    clip-path: var(--clip-path-hiw-2-border);
+}
+
+.contentContainer {
+    width: calc(100% - var(--space-m) * 2);
+    height: calc(calc(100% - var(--space-m) * 2));
+    padding: var(--space-m);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contentContainer > span {
+    display: block;
+    width: 50px;
+    height: 50px;
+}
+
+.contentContainer h3 {
+    color: white;
+    text-transform: uppercase;
+    margin: 0;
+    margin-top: var(--space-m);
+    font-size: 25px;
+}
+
+.contentContainer p {
+    margin: 0;
+}
+
+.contentContainer > span > svg {
+    width: 50px;
+    height: 50px;
+}
+
+.contentContainer > span > svg > path {
+    fill: var(--bg-color-main);
+}
+
+.gridBackground {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    object-fit: cover;
+    object-position: top;
+    bottom: 0;
+    height: 90%;
+    opacity: 0.9;
+
+    /* Fade out at the bottom */
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 1) 80%,
+        rgba(0, 0, 0, 0) 100%
+    );
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+
+    mask-image: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 1) 80%,
+        rgba(0, 0, 0, 0) 100%
+    );
+    mask-repeat: no-repeat;
+    mask-size: 100% 100%;
 }

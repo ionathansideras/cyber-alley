@@ -170,4 +170,48 @@
         calc(0% + 2px) calc(100% - 2px),
         calc(0% + 2px) calc(75% + 2px)
     );
+
+    --clip-path-hiw-1: polygon(
+        20% 0,
+        70% 0%,
+        100% 0,
+        100% 80%,
+        80% 100%,
+        0 100%,
+        0% 70%,
+        0 20%
+    );
+
+    --clip-path-hiw-1-border: polygon(
+        calc(20% + 2px) calc(0% + 2px),
+        calc(70% - 2px) calc(0% + 2px),
+        calc(100% - 2px) calc(0% + 2px),
+        calc(100% - 2px) calc(80% - 2px),
+        calc(80% - 2px) calc(100% - 2px),
+        calc(0% + 2px) calc(100% - 2px),
+        calc(0% + 2px) calc(70% - 2px),
+        calc(0% + 2px) calc(20% + 2px)
+    );
+
+    --clip-path-hiw-2: polygon(
+        20% 0%,
+        80% 0%,
+        100% 20%,
+        100% 100%,
+        80% 100%,
+        20% 100%,
+        0% 80%,
+        0 0
+    );
+
+    --clip-path-hiw-2-border: polygon(
+        calc(20% + 2px) calc(0% + 2px),
+        calc(80% - 2px) calc(0% + 2px),
+        calc(100% - 2px) calc(20% + 2px),
+        calc(100% - 2px) calc(100% - 2px),
+        calc(80% - 2px) calc(100% - 2px),
+        calc(20% + 2px) calc(100% - 2px),
+        calc(0% + 2px) calc(80% - 2px),
+        calc(0% + 2px) calc(0% + 2px)
+    );
 }
