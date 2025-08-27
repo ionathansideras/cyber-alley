@@ -40,6 +40,7 @@
 .connectText {
     display: flex;
     flex-direction: column;
+    margin-left: var(--space-m);
 }
 
 .connectText div {
@@ -56,6 +57,10 @@
     .connectArticle {
         width: 100%;
         margin: 0;
+    }
+
+    .connectText {
+        margin-left: 0;
     }
 
     .connectContainer {

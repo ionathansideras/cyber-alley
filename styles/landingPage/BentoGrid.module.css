@@ -51,13 +51,13 @@
 
 .article1Image {
     width: 40%;
-    height: auto;
+    height: 100%;
     pointer-events: none;
 }
 
 .robotImage {
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: contain;
     transform: scale(1.2);
 }
@@ -70,8 +70,8 @@
 }
 
 .article2Content {
-    margin: 0 auto;
-    width: 90%;
+    margin: 0 var(--space-m);
+    width: calc(90% - var(--space-m) * 2);
     display: flex;
     flex-direction: column;
     justify-content: center;

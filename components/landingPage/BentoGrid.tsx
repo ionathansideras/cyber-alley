@@ -15,7 +15,7 @@ export default function BentoGrid() {
                             className={styles.robotImage}
                             src="/robot-img.webp"
                             width={500}
-                            height={500}
+                            height={600}
                             alt="robot image"
                         />
                     </div>
