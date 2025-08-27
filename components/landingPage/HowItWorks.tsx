@@ -31,7 +31,8 @@ const data = [
 export default function HowItWorks() {
     return (
         <section className={styles.howItWorksContainer} id="how-it-works">
-            <Gradient right="-200px" top="0px" />
+            <Gradient right="-100px" bottom="0px" />
+            <Gradient left="-300px" top="0px" />
             <Title center>how it works</Title>
             <Content center forNewSection>
                 <strong>Cyber Alley</strong> makes it simple: discover events,

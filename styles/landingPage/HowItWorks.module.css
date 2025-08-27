@@ -6,6 +6,7 @@
     flex-direction: column;
     justify-content: center;
     overflow: hidden;
+    padding: 0 var(--space-m);
 }
 
 .chipsContainer {
@@ -127,4 +128,18 @@
     width: 100%;
     height: 100%;
     transition: opacity var(--transition-duration);
+}
+
+@media (max-width: 500px) {
+    .chipsContainer {
+        flex-direction: column;
+    }
+
+    .clipPath1 {
+        align-self: flex-start;
+    }
+
+    .clipPath2 {
+        align-self: flex-end;
+    }
 }
