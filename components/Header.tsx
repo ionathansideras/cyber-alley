@@ -48,6 +48,7 @@ export default function Header() {
                 <div
                     className={styles.hamburgerMenu}
                     onClick={handleOpenHamburger}
+                    title="Click to toggle the menu"
                 >
                     <span></span>
                     <span></span>
@@ -55,6 +56,7 @@ export default function Header() {
                     <span></span>
                 </div>
                 <Button
+                    title="Click to see the current events"
                     href="/events"
                     icon={
                         <svg

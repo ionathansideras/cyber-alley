@@ -23,17 +23,29 @@ export default function Footer() {
                     <h3>social media</h3>
                     <ul>
                         <li>
-                            <a href="https://www.youtube.com/" target="_blank">
+                            <a
+                                href="https://www.youtube.com/"
+                                target="_blank"
+                                title="Click to visit our Youtube channel"
+                            >
                                 Youtube
                             </a>
                         </li>
                         <li>
-                            <a href="https://discord.com/" target="_blank">
+                            <a
+                                href="https://discord.com/"
+                                target="_blank"
+                                title="Click to visit our Discord server"
+                            >
                                 Discord
                             </a>
                         </li>
                         <li>
-                            <a href="https://x.com/" target="_blank">
+                            <a
+                                href="https://x.com/"
+                                target="_blank"
+                                title="Click to visit our X page"
+                            >
                                 X
                             </a>
                         </li>
@@ -43,13 +55,25 @@ export default function Footer() {
                     <h3>links</h3>
                     <ul>
                         <li>
-                            <Link href="/">Home</Link>
+                            <Link href="/" title="Click to visit the Home page">
+                                Home
+                            </Link>
                         </li>
                         <li>
-                            <Link href="/events">Events</Link>
+                            <Link
+                                href="/events"
+                                title="Click to visit the Events page"
+                            >
+                                Events
+                            </Link>
                         </li>
                         <li>
-                            <Link href="/me">Profile</Link>
+                            <Link
+                                href="/me"
+                                title="Click to visit your Profile page"
+                            >
+                                Profile
+                            </Link>
                         </li>
                     </ul>
                 </nav>

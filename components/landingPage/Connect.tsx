@@ -26,6 +26,7 @@ export default function Connect() {
                             </Content>
 
                             <Button
+                                title="Click to see the current events"
                                 href="/events"
                                 icon={
                                     <svg

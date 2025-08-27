@@ -27,6 +27,7 @@ export default function BentoGrid() {
                             inspire new skills, and grow your network in tech.
                         </Content>
                         <Button
+                            title="Click to see the current events"
                             href="/events"
                             icon={
                                 <svg
@@ -64,6 +65,7 @@ export default function BentoGrid() {
                             your community on the map with Cyber Alley.
                         </Content>
                         <Button
+                            title="Click to create a new event"
                             href="/events/create"
                             icon={
                                 <svg
