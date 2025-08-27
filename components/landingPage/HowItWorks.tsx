@@ -62,6 +62,13 @@ export default function HowItWorks() {
                             </span>
                             <h3>{item.title}</h3>
                             <Content center>{item.content}</Content>
+                            <Image
+                                className={styles.robotBackground}
+                                src={"/robot-img.png"}
+                                width={100}
+                                height={100}
+                                alt="robot background"
+                            />
                         </div>
                     </div>
                 ))}
