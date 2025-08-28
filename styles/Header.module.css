@@ -17,15 +17,15 @@
     transition: all var(--transition-duration);
 }
 
-.header:global(.headerHidden) {
+.headerHidden {
     transform: translateY(-200%);
 }
 
-.header:global(.headerFilled) {
+.headerFilled {
     background-color: var(--bg-color-black);
 }
 
-.header:global(.headerFilled) h1 {
+.headerFilled h1 {
     transform: translateX(0) !important;
 }
 

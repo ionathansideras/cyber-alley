@@ -1,4 +1,10 @@
-import { useRef, useEffect, type Dispatch, type SetStateAction } from "react";
+import {
+    useRef,
+    useEffect,
+    type Dispatch,
+    type SetStateAction,
+    memo,
+} from "react";
 import styles from "@/styles/HamburgerMenu.module.css";
 import Gradient from "./Gradient";
 
@@ -23,7 +29,7 @@ const links = [
     },
 ];
 
-export default function HamburgerMenu({
+function HamburgerMenu({
     open,
     setOpen,
 }: {
@@ -32,6 +38,7 @@ export default function HamburgerMenu({
 }) {
     const burgerRef = useRef<HTMLDivElement | null>(null);
 
+    console.log("i re run");
     function handleOpenHamburger() {
         setOpen((prev) => !prev);
     }
@@ -91,3 +98,5 @@ export default function HamburgerMenu({
         </div>
     );
 }
+
+export default memo(HamburgerMenu);

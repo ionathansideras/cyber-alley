@@ -9,7 +9,7 @@ export default function Header({
 }: {
     forLandingPage: boolean;
 }) {
-    const headerRef = useRef<HTMLHeadingElement | null>(null);
+    const headerRef = useRef<HTMLElement | null>(null);
     const prevScrolledAmountRef = useRef(0);
     const [open, setOpen] = useState(false);
 
@@ -17,21 +17,24 @@ export default function Header({
         function handleScroll() {
             const scrolledAmount = window.scrollY;
             const buffer = 100;
+            const headerClassList = headerRef.current?.classList;
+
+            if (!headerClassList) return;
 
             if (scrolledAmount === 0 && forLandingPage) {
-                headerRef.current?.classList.remove("headerHidden");
-                headerRef.current?.classList.remove("headerFilled");
+                headerClassList.remove(styles.headerHidden);
+                headerClassList.remove(styles.headerFilled);
             } else if (scrolledAmount > 10 && forLandingPage) {
-                headerRef.current?.classList.add("headerFilled");
+                headerClassList.add(styles.headerFilled);
             }
 
             if (scrolledAmount > prevScrolledAmountRef.current + buffer) {
                 prevScrolledAmountRef.current = scrolledAmount;
-                headerRef.current?.classList.add("headerHidden");
+                headerClassList.add(styles.headerHidden);
                 setOpen(false);
             } else if (scrolledAmount < prevScrolledAmountRef.current) {
                 prevScrolledAmountRef.current = scrolledAmount;
-                headerRef.current?.classList.remove("headerHidden");
+                headerClassList.remove(styles.headerHidden);
             }
         }
 
@@ -44,16 +47,18 @@ export default function Header({
 
     useEffect(() => {
         const headerClassList = headerRef.current?.classList;
+
         if (!headerClassList) return;
 
-        if (!headerClassList.contains("headerFilled") && open) {
-            headerClassList.add("headerFilled");
+        if (!headerClassList.contains(styles.headerFilled) && open) {
+            headerClassList.add(styles.headerFilled);
         } else if (
-            headerClassList.contains("headerFilled") &&
+            headerClassList.contains(styles.headerFilled) &&
             !open &&
-            window.scrollY === 0
+            window.scrollY === 0 &&
+            forLandingPage
         ) {
-            headerClassList.remove("headerFilled");
+            headerClassList.remove(styles.headerFilled);
         }
     }, [open]);
 
@@ -61,7 +66,7 @@ export default function Header({
         <header
             ref={headerRef}
             className={`${styles.header} ${
-                forLandingPage ? styles.forLandingPage : "headerFilled"
+                forLandingPage ? styles.forLandingPage : styles.headerFilled
             }`}
         >
             <div className={styles.brand}>
