@@ -38,7 +38,6 @@ function HamburgerMenu({
 }) {
     const burgerRef = useRef<HTMLDivElement | null>(null);
 
-    console.log("i re run");
     function handleOpenHamburger() {
         setOpen((prev) => !prev);
     }
