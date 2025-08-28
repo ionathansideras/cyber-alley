@@ -1,5 +1,13 @@
 import React from "react";
 
 export default function MyEvents() {
-    return <div>my-events</div>;
+    return (
+        <div
+            style={{
+                height: "100vh",
+            }}
+        >
+            my-events
+        </div>
+    );
 }

@@ -1,5 +1,13 @@
 import React from "react";
 
 export default function tickets() {
-    return <div>tickets</div>;
+    return (
+        <div
+            style={{
+                height: "100vh",
+            }}
+        >
+            tickets
+        </div>
+    );
 }

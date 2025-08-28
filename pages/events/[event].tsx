@@ -3,5 +3,13 @@ import { useRouter } from "next/router";
 
 export default function Event() {
     const router = useRouter();
-    return <div>event: {router.query.event}</div>;
+    return (
+        <div
+            style={{
+                height: "100vh",
+            }}
+        >
+            event: {router.query.event}
+        </div>
+    );
 }
