@@ -1,8 +1,8 @@
 import Image from "next/image";
-import styles from "@/styles/landingPage/Footer.module.css";
-import Title from "../Title";
+import styles from "@/styles/Footer.module.css";
+import Title from "./Title";
 import Link from "next/link";
-import Content from "../Content";
+import Content from "./Content";
 
 export default function Footer({ withImage }: { withImage: boolean }) {
     return (

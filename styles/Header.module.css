@@ -26,7 +26,7 @@
 }
 
 .header:global(.headerFilled) h1 {
-    transform: translateX(0);
+    transform: translateX(0) !important;
 }
 
 .brand {
