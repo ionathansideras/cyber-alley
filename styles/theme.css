@@ -214,4 +214,26 @@
         calc(0% + 2px) calc(80% - 2px),
         calc(0% + 2px) calc(0% + 2px)
     );
+
+    --clip-path-hamburger: polygon(
+        30% 0%,
+        70% 0%,
+        100% 0,
+        100% 100%,
+        70% 100%,
+        20% 100%,
+        0 80%,
+        0 0
+    );
+
+    --clip-path-hamburger-border: polygon(
+        calc(30% + 2px) calc(0% + 2px),
+        calc(70% - 2px) calc(0% + 2px),
+        calc(100% - 2px) calc(0% + 2px),
+        calc(100% - 2px) calc(100% - 2px),
+        calc(70% - 2px) calc(100% - 2px),
+        calc(20% + 2px) calc(100% - 2px),
+        calc(0% + 2px) calc(80% - 2px),
+        calc(0% + 2px) calc(0% + 2px)
+    );
 }

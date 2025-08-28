@@ -1,0 +1,117 @@
+.hamburgerMenu {
+    width: 37px;
+    height: 29px;
+    position: relative;
+    /* margin: 10px auto; */
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+.hamburgerMenu span {
+    display: block;
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background: var(--bg-color-main);
+    opacity: 1;
+    left: 0;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: 0.25s ease-in-out;
+    -moz-transition: 0.25s ease-in-out;
+    -o-transition: 0.25s ease-in-out;
+    transition: 0.25s ease-in-out;
+}
+
+.hamburgerMenu span:nth-child(1) {
+    top: 0px;
+}
+
+.hamburgerMenu span:nth-child(2),
+.hamburgerMenu span:nth-child(3) {
+    top: 13px;
+}
+
+.hamburgerMenu span:nth-child(4) {
+    top: 25px;
+}
+
+.open span:nth-child(1) {
+    top: 15px;
+    width: 0%;
+    left: 50%;
+}
+
+.open span:nth-child(2) {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.open span:nth-child(3) {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.open span:nth-child(4) {
+    top: 15px;
+    width: 0%;
+    left: 50%;
+}
+
+.menu {
+    position: absolute;
+    background: var(--border-colorful);
+    top: 14svh;
+    right: 0;
+    clip-path: var(--clip-path-hamburger);
+}
+
+.menu nav {
+    position: relative;
+    width: calc(100% - var(--space-l) * 2);
+    height: calc(100% - var(--space-l) * 2);
+    padding: var(--space-l);
+
+    clip-path: var(--clip-path-hamburger-border);
+    z-index: 200;
+}
+
+.background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color: var(--bg-color-secondary);
+    clip-path: var(--clip-path-hamburger-border);
+}
+
+.links {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: var(--space-m);
+}
+
+.links a {
+    color: var(--text-color-main);
+    text-decoration: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 25px;
+    font-weight: 600;
+}

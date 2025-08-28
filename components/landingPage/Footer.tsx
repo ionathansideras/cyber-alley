@@ -4,16 +4,18 @@ import Title from "../Title";
 import Link from "next/link";
 import Content from "../Content";
 
-export default function Footer() {
+export default function Footer({ withImage }: { withImage: boolean }) {
     return (
         <footer className={styles.footerContainer}>
-            <Image
-                className={styles.coderImage}
-                src={"/coder.png"}
-                width={600}
-                height={600}
-                alt="coder image"
-            />
+            {withImage && (
+                <Image
+                    className={styles.coderImage}
+                    src={"/coder.png"}
+                    width={600}
+                    height={600}
+                    alt="coder image"
+                />
+            )}
             <div className={styles.footerContentLeft}>
                 <Title>Cyber Alley</Title>
                 <Content>Join, Connect, Learn, Repeat</Content>
