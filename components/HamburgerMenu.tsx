@@ -55,7 +55,7 @@ function HamburgerMenu({
         return () => {
             document.removeEventListener("click", onClickOutside);
         };
-    }, []);
+    }, [setOpen]);
 
     return (
         <div ref={burgerRef}>

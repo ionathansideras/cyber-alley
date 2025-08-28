@@ -1,8 +1,8 @@
-"use client";
 import { useEffect, useRef, useState } from "react";
 import styles from "@/styles/Header.module.css";
 import Button from "./Button";
 import HamburgerMenu from "./HamburgerMenu";
+import Link from "next/link";
 
 export default function Header({
     forLandingPage,
@@ -60,7 +60,7 @@ export default function Header({
         ) {
             headerClassList.remove(styles.headerFilled);
         }
-    }, [open]);
+    }, [open, forLandingPage]);
 
     return (
         <header
@@ -70,7 +70,9 @@ export default function Header({
             }`}
         >
             <div className={styles.brand}>
-                <h1>cyber alley</h1>
+                <Link href={"/"}>
+                    <h1>cyber alley</h1>
+                </Link>
             </div>
             <nav className={styles.nav}>
                 {!forLandingPage && (

@@ -31,11 +31,15 @@
 
 .brand {
     display: flex;
-    color: white;
     gap: 50px;
     text-transform: uppercase;
     align-items: center;
     margin-left: var(--space-m);
+}
+
+.brand a {
+    color: white;
+    text-decoration: none;
 }
 
 .brand h1 {
