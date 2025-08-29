@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "@/styles/404.module.css";
-import Gradient from "@/components/Gradient";
 import Title from "@/components/Title";
 import Image from "next/image";
 import Content from "@/components/Content";
@@ -31,7 +30,7 @@ export default function NotFountError() {
             <div className={styles.contentContainer}>
                 <Title>404</Title>
                 <Content center>
-                    Oops looks like you tried to access a page that doesn't
+                    Oops looks like you tried to access a page that doesn&apos;t
                     exist
                 </Content>
                 <div>
