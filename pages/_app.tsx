@@ -12,9 +12,18 @@ const tektur = Tektur({
 
 export default function App({ Component, pageProps }: AppProps) {
     const { pathname } = useRouter();
+
     return (
         <main className={tektur.className}>
-            <Header forLandingPage={pathname === "/" ? true : false} />
+            <Header
+                forLandingPage={
+                    pathname === "/" ||
+                    pathname === "/404" ||
+                    pathname === "/_error"
+                        ? true
+                        : false
+                }
+            />
             <Component {...pageProps} />
             <Footer withImage={pathname === "/" ? true : false} />
         </main>
