@@ -31,7 +31,8 @@ export default function NotFountError() {
             <div className={styles.contentContainer}>
                 <Title>404</Title>
                 <Content center>
-                    Oops looks like you tried to access a page that dosn't exist
+                    Oops looks like you tried to access a page that doesn't
+                    exist
                 </Content>
                 <div>
                     <Button
