@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function Header({
     forLandingPage,
 }: {
-    forLandingPage: boolean;
+    forLandingPage?: boolean;
 }) {
     const headerRef = useRef<HTMLElement | null>(null);
     const prevScrolledAmountRef = useRef(0);

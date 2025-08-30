@@ -65,6 +65,7 @@ function HamburgerMenu({
                 } `}
                 onClick={handleOpenHamburger}
                 title="Click to toggle the menu"
+                data-testid="hamburger-button"
             >
                 <span></span>
                 <span></span>
