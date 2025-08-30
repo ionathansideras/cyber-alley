@@ -7,11 +7,13 @@ export default function Button({
     href,
     icon,
     title,
+    onClick,
 }: {
     children: React.ReactNode;
     href?: string;
     icon?: React.ReactNode;
     title?: string;
+    onClick?: () => void;
 }) {
     if (href) {
         return (
@@ -22,7 +24,7 @@ export default function Button({
         );
     } else {
         return (
-            <button className={styles.button} title={title}>
+            <button className={styles.button} title={title} onClick={onClick}>
                 {children}
                 {icon}
             </button>
