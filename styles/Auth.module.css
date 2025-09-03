@@ -1,0 +1,84 @@
+.authContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: calc(14svh + var(--space-m)) var(--space-m) var(--space-m)
+        var(--space-m);
+    background-image: url("/hero.png");
+    background-position: center;
+    background-size: cover;
+}
+
+.wrapper {
+    width: 600px;
+    background: var(--border-colorful);
+    clip-path: var(--clip-path-hiw-1);
+}
+
+.form {
+    background-color: var(--bg-color-black);
+    clip-path: var(--clip-path-hiw-1-border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100% - var(--space-l) * 2);
+    width: calc(100% - var(--space-m) * 2);
+    padding: var(--space-l) var(--space-m);
+    gap: var(--space-m);
+}
+
+.form label {
+    color: var(--text-color-secondary);
+    width: 80%;
+}
+
+.buttonsContainer {
+    display: flex;
+    gap: var(--space-m);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.form input {
+    width: 80%;
+    height: 35px;
+    font-size: var(--text-m);
+}
+
+.form h2 {
+    text-align: center;
+}
+
+.form p {
+    margin: 0;
+}
+
+.error,
+.message {
+    margin-top: 15px;
+    font-size: 14px;
+    color: red;
+    text-align: center;
+}
+
+.message {
+    color: var(--bg-color-main);
+}
+
+@media (max-width: 700px) {
+    .wrapper {
+        width: 100%;
+    }
+}
+
+@media (max-width: 500px) {
+    .form input {
+        width: 100%;
+    }
+
+    .form label {
+        width: 100%;
+    }
+}

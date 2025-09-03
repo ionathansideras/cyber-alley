@@ -6,8 +6,10 @@ import Link from "next/link";
 
 export default function Header({
     forLandingPage,
+    onlyTitleLeft,
 }: {
     forLandingPage?: boolean;
+    onlyTitleLeft?: boolean;
 }) {
     const headerRef = useRef<HTMLElement | null>(null);
     const prevScrolledAmountRef = useRef(0);
@@ -67,7 +69,7 @@ export default function Header({
             ref={headerRef}
             className={`${styles.header} ${
                 forLandingPage ? styles.forLandingPage : styles.headerFilled
-            }`}
+            } ${onlyTitleLeft ? styles.onlyTitleLeft : ""}`}
         >
             <div className={styles.brand}>
                 <Link href={"/"}>

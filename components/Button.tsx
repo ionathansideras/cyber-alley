@@ -8,12 +8,14 @@ export default function Button({
     icon,
     title,
     onClick,
+    loading,
 }: {
     children: React.ReactNode;
     href?: string;
     icon?: React.ReactNode;
     title?: string;
     onClick?: () => void;
+    loading?: boolean;
 }) {
     if (href) {
         return (
@@ -24,9 +26,19 @@ export default function Button({
         );
     } else {
         return (
-            <button className={styles.button} title={title} onClick={onClick}>
-                {children}
-                {icon}
+            <button
+                className={styles.button}
+                type="button"
+                title={title}
+                onClick={onClick}
+            >
+                {loading ? (
+                    <span className={styles.loader}></span>
+                ) : (
+                    <>
+                        {children} {icon}
+                    </>
+                )}
             </button>
         );
     }

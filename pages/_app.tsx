@@ -21,8 +21,9 @@ export default function App({ Component, pageProps }: AppProps) {
                     pathname === "/404" ||
                     pathname === "/_error"
                         ? true
-                        : false
+                        : false || pathname === "/authentication"
                 }
+                onlyTitleLeft={pathname === "/authentication"}
             />
             <Component {...pageProps} />
             <Footer withImage={pathname === "/" ? true : false} />

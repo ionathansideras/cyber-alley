@@ -1,14 +1,17 @@
 import {
     useRef,
     useEffect,
+    useState,
     type Dispatch,
     type SetStateAction,
     memo,
 } from "react";
 import styles from "@/styles/HamburgerMenu.module.css";
 import Gradient from "./Gradient";
-
+import { createClient } from "@/utils/supabase/component";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import Button from "./Button";
 
 const links = [
     {
@@ -37,6 +40,10 @@ function HamburgerMenu({
     setOpen: Dispatch<SetStateAction<boolean>>;
 }) {
     const burgerRef = useRef<HTMLDivElement | null>(null);
+    const supabase = createClient();
+    const router = useRouter();
+    const [userLoggedIn, setUserLoggedIn] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     function handleOpenHamburger() {
         setOpen((prev) => !prev);
@@ -52,10 +59,36 @@ function HamburgerMenu({
             }
         }
         document.addEventListener("click", onClickOutside);
+
         return () => {
             document.removeEventListener("click", onClickOutside);
         };
     }, [setOpen]);
+
+    useEffect(() => {
+        async function getUser() {
+            const userObject = await supabase.auth.getUser();
+            if (userObject.data.user) {
+                setUserLoggedIn(true);
+            } else {
+                setUserLoggedIn(false);
+            }
+        }
+
+        getUser();
+    });
+
+    async function handleLogOut() {
+        setLoading(true);
+
+        const { error } = await supabase.auth.signOut();
+
+        if (!error) {
+            router.push("/");
+        } else {
+            setLoading(false);
+        }
+    }
 
     return (
         <div ref={burgerRef}>
@@ -89,6 +122,15 @@ function HamburgerMenu({
                                         </Link>
                                     </li>
                                 ))}
+                                {userLoggedIn ? (
+                                    <li onClick={handleLogOut}>
+                                        <Button loading={loading}>
+                                            Log out
+                                        </Button>
+                                    </li>
+                                ) : (
+                                    ""
+                                )}
                             </ul>
                         </nav>
                         <Gradient top="-170px" left="-250px" z={4} />

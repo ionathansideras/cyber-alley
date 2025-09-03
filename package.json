@@ -11,6 +11,8 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
+    "@supabase/ssr": "^0.7.0",
+    "@supabase/supabase-js": "^2.57.0",
     "@testing-library/user-event": "^14.6.1",
     "next": "15.5.0",
     "react": "19.1.0",
