@@ -2,6 +2,8 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
 import styles from "@/styles/Auth.module.css";
+import Head from "next/head";
+import { URL } from "@/constants";
 
 import { createClient } from "@/utils/supabase/component";
 import Button from "@/components/Button";
@@ -54,47 +56,82 @@ export default function Login() {
     }
 
     return (
-        <main className={styles.authContainer}>
-            <section className={styles.wrapper}>
-                <form className={styles.form}>
-                    <Title>Start Now</Title>
-                    {errorMessage && (
-                        <p className={styles.error}>{errorMessage}</p>
-                    )}
-                    {message && <p className={styles.message}>{message}</p>}
+        <>
+            <Head>
+                <title>Log in / Sign up - Cyber Alley</title>
+                <meta
+                    name="description"
+                    content="Log in or sign up to Cyber Alley, the platform for tech enthusiasts to discover, join, and host tech events. Access the latest events, meetups, and workshops for developers and innovators."
+                />
+                {/* Open Graph (Facebook, LinkedIn, etc.) */}
+                <meta
+                    property="og:title"
+                    content="Log in / Sign up - Cyber Alley"
+                />
+                <meta
+                    property="og:description"
+                    content="Log in or sign up to Cyber Alley, the platform for tech enthusiasts to discover, join, and host tech events. Access the latest events, meetups, and workshops for developers and innovators."
+                />
+                <meta property="og:url" content={URL + "authentication"} />
+                <meta property="og:type" content="website" />
 
-                    <label htmlFor="email">Email:</label>
-                    <input
-                        id="email"
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <label htmlFor="password">Password:</label>
-                    <input
-                        id="password"
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                    <div className={styles.buttonsContainer}>
-                        <Button
-                            onClick={logIn}
-                            title={"Click to login"}
-                            loading={logInLoading}
-                        >
-                            Log in
-                        </Button>
-                        <Button
-                            onClick={signUp}
-                            title={"Click to Sign up"}
-                            loading={signUpLoading}
-                        >
-                            Sign up
-                        </Button>
-                    </div>
-                </form>
-            </section>
-        </main>
+                {/* Twitter Card */}
+                <meta
+                    name="twitter:card"
+                    content="Log in or sign up to Cyber Alley, the platform for tech enthusiasts to discover, join, and host tech events. Access the latest events, meetups, and workshops for developers and innovators."
+                />
+                <meta
+                    name="twitter:title"
+                    content="Log in / Sign up - Cyber Alley"
+                />
+                <meta
+                    name="twitter:description"
+                    content="Discover, host, and join tech events for developers on Cyber Alley. Log in or sign up now!"
+                />
+            </Head>
+
+            <main className={styles.authContainer}>
+                <section className={styles.wrapper}>
+                    <form className={styles.form}>
+                        <Title>Start Now</Title>
+                        {errorMessage && (
+                            <p className={styles.error}>{errorMessage}</p>
+                        )}
+                        {message && <p className={styles.message}>{message}</p>}
+
+                        <label htmlFor="email">Email:</label>
+                        <input
+                            id="email"
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                        <label htmlFor="password">Password:</label>
+                        <input
+                            id="password"
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                        <div className={styles.buttonsContainer}>
+                            <Button
+                                onClick={logIn}
+                                title={"Click to login"}
+                                loading={logInLoading}
+                            >
+                                Log in
+                            </Button>
+                            <Button
+                                onClick={signUp}
+                                title={"Click to Sign up"}
+                                loading={signUpLoading}
+                            >
+                                Sign up
+                            </Button>
+                        </div>
+                    </form>
+                </section>
+            </main>
+        </>
     );
 }
