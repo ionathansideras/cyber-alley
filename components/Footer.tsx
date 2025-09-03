@@ -4,7 +4,7 @@ import Title from "./Title";
 import Link from "next/link";
 import Content from "./Content";
 
-export default function Footer({ withImage }: { withImage: boolean }) {
+export default function Footer({ withImage }: { withImage?: boolean }) {
     return (
         <footer className={styles.footerContainer}>
             {withImage && (

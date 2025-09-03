@@ -1,7 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
 
-import type { User } from "@supabase/supabase-js";
 import type { GetServerSidePropsContext } from "next";
 import { createClient } from "@/utils/supabase/server-props";
 
