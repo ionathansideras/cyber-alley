@@ -1,3 +1,9 @@
+import Title from "@/components/Title";
+
 export default function ErrorPage() {
-    return <p>Sorry, something went wrong</p>;
+    return (
+        <div className="under-development">
+            <Title>page under development</Title>
+        </div>
+    );
 }

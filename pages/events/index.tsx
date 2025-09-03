@@ -3,15 +3,12 @@ import React from "react";
 import type { User } from "@supabase/supabase-js";
 import type { GetServerSidePropsContext } from "next";
 import { createClient } from "@/utils/supabase/server-props";
+import Title from "@/components/Title";
 
 export default function Events({ user }: { user: User }) {
     return (
-        <div
-            style={{
-                height: "100vh",
-            }}
-        >
-            events yolo
+        <div className="under-development">
+            <Title>page under development</Title>
             <h1>Hello, {user.email || "user"}!</h1>
         </div>
     );

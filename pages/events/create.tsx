@@ -2,15 +2,12 @@ import React from "react";
 
 import type { GetServerSidePropsContext } from "next";
 import { createClient } from "@/utils/supabase/server-props";
+import Title from "@/components/Title";
 
 export default function Create() {
     return (
-        <div
-            style={{
-                height: "100vh",
-            }}
-        >
-            Create
+        <div className="under-development">
+            <Title>page under development</Title>
         </div>
     );
 }

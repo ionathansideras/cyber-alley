@@ -2,9 +2,14 @@ import React from "react";
 
 import type { GetServerSidePropsContext } from "next";
 import { createClient } from "@/utils/supabase/server-props";
+import Title from "@/components/Title";
 
 export default function Edit() {
-    return <div>Edit</div>;
+    return (
+        <div className="under-development">
+            <Title>page under development</Title>
+        </div>
+    );
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {

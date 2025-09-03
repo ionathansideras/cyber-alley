@@ -12,3 +12,11 @@ body::selection {
     color: var(--bg-color-black);
     background: var(--bg-color-main);
 }
+
+.under-development {
+    height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

@@ -3,15 +3,13 @@ import { useRouter } from "next/router";
 
 import type { GetServerSidePropsContext } from "next";
 import { createClient } from "@/utils/supabase/server-props";
+import Title from "@/components/Title";
 
 export default function Event() {
     const router = useRouter();
     return (
-        <div
-            style={{
-                height: "100vh",
-            }}
-        >
+        <div className="under-development">
+            <Title>page under development</Title>
             event: {router.query.event}
         </div>
     );
