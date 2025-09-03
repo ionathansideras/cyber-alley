@@ -24,8 +24,8 @@
     align-items: center;
     justify-content: center;
     height: calc(100% - var(--space-l) * 2);
-    width: calc(100% - var(--space-m) * 2);
-    padding: var(--space-l) var(--space-m);
+    width: calc(100% - var(--space-l) * 2);
+    padding: var(--space-l);
     gap: var(--space-m);
 }
 

@@ -1,7 +1,7 @@
 "use client";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import styles from "@/styles/Auth.module.css";
+import styles from "@/styles/Authentication.module.css";
 import Head from "next/head";
 import { URL } from "@/constants";
 
