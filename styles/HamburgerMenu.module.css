@@ -107,7 +107,7 @@
     gap: var(--space-m);
 }
 
-.links a {
+.links li > a {
     color: var(--text-color-main);
     text-decoration: none;
     cursor: pointer;

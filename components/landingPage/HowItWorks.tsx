@@ -57,8 +57,7 @@ export default function HowItWorks() {
                                     xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 24 24"
                                 >
-                                    {" "}
-                                    <path d={item.icon} />{" "}
+                                    <path d={item.icon} />
                                 </svg>
                             </span>
                             <h3>{item.title}</h3>

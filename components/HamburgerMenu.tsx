@@ -1,17 +1,16 @@
 import {
     useRef,
     useEffect,
-    useState,
     type Dispatch,
     type SetStateAction,
     memo,
+    useState,
 } from "react";
 import styles from "@/styles/HamburgerMenu.module.css";
 import Gradient from "./Gradient";
-import { createClient } from "@/utils/supabase/component";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import Button from "./Button";
+import { useUser } from "@auth0/nextjs-auth0";
 
 const links = [
     {
@@ -40,9 +39,7 @@ function HamburgerMenu({
     setOpen: Dispatch<SetStateAction<boolean>>;
 }) {
     const burgerRef = useRef<HTMLDivElement | null>(null);
-    const supabase = createClient();
-    const router = useRouter();
-    const [userLoggedIn, setUserLoggedIn] = useState(false);
+    const { user } = useUser();
     const [loading, setLoading] = useState(false);
 
     function handleOpenHamburger() {
@@ -64,31 +61,6 @@ function HamburgerMenu({
             document.removeEventListener("click", onClickOutside);
         };
     }, [setOpen]);
-
-    useEffect(() => {
-        async function getUser() {
-            const userObject = await supabase.auth.getUser();
-            if (userObject.data.user) {
-                setUserLoggedIn(true);
-            } else {
-                setUserLoggedIn(false);
-            }
-        }
-
-        getUser();
-    });
-
-    async function handleLogOut() {
-        setLoading(true);
-
-        const { error } = await supabase.auth.signOut();
-
-        if (!error) {
-            router.push("/");
-        } else {
-            setLoading(false);
-        }
-    }
 
     return (
         <div ref={burgerRef}>
@@ -122,12 +94,15 @@ function HamburgerMenu({
                                         </Link>
                                     </li>
                                 ))}
-                                {userLoggedIn ? (
-                                    <li onClick={handleLogOut}>
-                                        <Button loading={loading}>
-                                            Log out
-                                        </Button>
-                                    </li>
+                                {user ? (
+                                    <Button
+                                        href="/auth/logout"
+                                        aTag
+                                        loading={loading}
+                                        onClick={() => setLoading(true)}
+                                    >
+                                        Log out
+                                    </Button>
                                 ) : (
                                     ""
                                 )}

@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import React from "react";
 import styles from "@/styles/Button.module.css";
@@ -9,6 +10,7 @@ export default function Button({
     title,
     onClick,
     loading,
+    aTag,
 }: {
     children: React.ReactNode;
     href?: string;
@@ -16,19 +18,34 @@ export default function Button({
     title?: string;
     onClick?: () => void;
     loading?: boolean;
+    aTag?: boolean;
 }) {
     if (href) {
+        if (aTag) {
+            // plain <a>
+            return (
+                <a
+                    href={href}
+                    className={styles.button}
+                    title={title}
+                    onClick={onClick}
+                >
+                    {loading ? (
+                        <span className={styles.loader}></span>
+                    ) : (
+                        <>
+                            {children}
+                            {icon}
+                        </>
+                    )}
+                </a>
+            );
+        }
+        // Next.js <Link>
         return (
-            <Link href={href} className={styles.button} title={title}>
-                {children}
-                {icon}
-            </Link>
-        );
-    } else {
-        return (
-            <button
+            <Link
+                href={href}
                 className={styles.button}
-                type="button"
                 title={title}
                 onClick={onClick}
             >
@@ -36,10 +53,29 @@ export default function Button({
                     <span className={styles.loader}></span>
                 ) : (
                     <>
-                        {children} {icon}
+                        {children}
+                        {icon}
                     </>
                 )}
-            </button>
+            </Link>
         );
     }
+
+    // fallback <button>
+    return (
+        <button
+            className={styles.button}
+            type="button"
+            title={title}
+            onClick={onClick}
+        >
+            {loading ? (
+                <span className={styles.loader}></span>
+            ) : (
+                <>
+                    {children} {icon}
+                </>
+            )}
+        </button>
+    );
 }

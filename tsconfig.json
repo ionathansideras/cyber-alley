@@ -19,6 +19,12 @@
             "@/components/*": ["components/*"]
         }
     },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+    "include": [
+        "next-env.d.ts",
+        "**/*.ts",
+        "**/*.tsx",
+        "pages/api/auth/[...auth0].ts",
+        "pages/_app.jsx"
+    ],
     "exclude": ["node_modules"]
 }

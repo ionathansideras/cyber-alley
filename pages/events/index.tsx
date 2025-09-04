@@ -2,8 +2,8 @@ import React from "react";
 
 import type { User } from "@supabase/supabase-js";
 import type { GetServerSidePropsContext } from "next";
-import { createClient } from "@/utils/supabase/server-props";
 import Title from "@/components/Title";
+import { auth0 } from "@/lib/auth0";
 
 export default function Events({ user }: { user: User }) {
     return (
@@ -15,19 +15,16 @@ export default function Events({ user }: { user: User }) {
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-    const supabase = createClient(context);
-    const { data, error } = await supabase.auth.getUser();
-    if (error || !data) {
+    const session = await auth0.getSession(context.req);
+
+    if (!session) {
         return {
             redirect: {
                 destination: "/authentication",
                 permanent: false,
             },
         };
+    } else if (session) {
+        return { props: { user: session.user ?? null } };
     }
-    return {
-        props: {
-            user: data.user,
-        },
-    };
 }
