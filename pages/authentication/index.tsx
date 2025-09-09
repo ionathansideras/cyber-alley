@@ -6,8 +6,9 @@ import Button from "@/components/Button";
 import { FaGithubSquare } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 import Content from "@/components/Content";
+import type { GetServerSidePropsContext } from "next";
 
-export default function Login() {
+export default function Login({ returnTo }: { returnTo: string }) {
     return (
         <>
             <Head>
@@ -53,13 +54,13 @@ export default function Login() {
                         </Content>
 
                         <Button
-                            href="/auth/login?connection=google-oauth2&returnTo=/events"
+                            href={`/auth/login?connection=google-oauth2&returnTo=${returnTo}`}
                             icon={<SiGmail />}
                         >
                             Continue with Google
                         </Button>
                         <Button
-                            href="/auth/login?connection=github&returnTo=/events"
+                            href={`/auth/login?connection=github&returnTo=${returnTo}`}
                             icon={<FaGithubSquare />}
                         >
                             Continue with GitHub
@@ -69,4 +70,10 @@ export default function Login() {
             </main>
         </>
     );
+}
+
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+    const returnTo = context.query.returnTo;
+
+    return { props: { returnTo: returnTo ?? "/" } };
 }

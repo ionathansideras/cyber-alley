@@ -18,7 +18,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     if (!session) {
         return {
             redirect: {
-                destination: "/authentication",
+                destination: "/authentication?returnTo=/events/create",
                 permanent: false,
             },
         };

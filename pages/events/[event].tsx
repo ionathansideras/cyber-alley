@@ -1,31 +1,51 @@
-import React from "react";
-import { useRouter } from "next/router";
-
-import type { GetServerSidePropsContext } from "next";
+import type { GetStaticPropsContext } from "next";
 import Title from "@/components/Title";
-import { auth0 } from "@/lib/auth0";
+import type { Event } from "@/types";
 
-export default function Event() {
-    const router = useRouter();
+export default function Event({ event }: { event: Event }) {
     return (
         <div className="under-development">
             <Title>page under development</Title>
-            event: {router.query.event}
+            event: {event.name}
         </div>
     );
 }
 
-export async function getServerSideProps(context: GetServerSidePropsContext) {
-    const session = await auth0.getSession(context.req);
+export async function getStaticProps(context: GetStaticPropsContext) {
+    const eventId = Number(context.params?.event);
 
-    if (!session) {
+    const events: Event[] = [
+        { id: 1, name: "test1" },
+        { id: 2, name: "test2" },
+        { id: 3, name: "test3" },
+        { id: 4, name: "test4" },
+    ];
+
+    const event = events.find((event) => eventId === event.id);
+
+    if (!event) {
         return {
-            redirect: {
-                destination: "/authentication",
-                permanent: false,
-            },
+            notFound: true,
         };
-    } else if (session) {
-        return { props: { user: session.user ?? null } };
     }
+
+    return { props: { event }, revalidate: 10 };
+}
+
+export async function getStaticPaths() {
+    const events: Event[] = [
+        { id: 1, name: "test1" },
+        { id: 2, name: "test2" },
+        { id: 3, name: "test3" },
+        { id: 4, name: "test4" },
+    ];
+
+    const paths = events.map((e) => ({
+        params: { event: String(e.id) },
+    }));
+
+    return {
+        paths,
+        fallback: "blocking",
+    };
 }
