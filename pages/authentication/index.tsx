@@ -1,3 +1,4 @@
+// pages/authentication.tsx (pages router)
 import styles from "@/styles/Authentication.module.css";
 import Head from "next/head";
 import { URL } from "@/constants";
@@ -6,9 +7,12 @@ import Button from "@/components/Button";
 import { FaGithubSquare } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 import Content from "@/components/Content";
-import type { GetServerSidePropsContext } from "next";
+import { useRouter } from "next/router";
 
-export default function Login({ returnTo }: { returnTo: string }) {
+export default function Login() {
+    const router = useRouter();
+    const returnToParam = router.query.returnTo || "/";
+
     return (
         <>
             <Head>
@@ -17,7 +21,6 @@ export default function Login({ returnTo }: { returnTo: string }) {
                     name="description"
                     content="Log in or sign up to Cyber Alley, the platform for tech enthusiasts to discover, join, and host tech events. Access the latest events, meetups, and workshops for developers and innovators."
                 />
-                {/* Open Graph (Facebook, LinkedIn, etc.) */}
                 <meta
                     property="og:title"
                     content="Log in / Sign up - Cyber Alley"
@@ -28,8 +31,6 @@ export default function Login({ returnTo }: { returnTo: string }) {
                 />
                 <meta property="og:url" content={URL + "authentication"} />
                 <meta property="og:type" content="website" />
-
-                {/* Twitter Card */}
                 <meta
                     name="twitter:card"
                     content="Log in or sign up to Cyber Alley, the platform for tech enthusiasts to discover, join, and host tech events. Access the latest events, meetups, and workshops for developers and innovators."
@@ -54,13 +55,14 @@ export default function Login({ returnTo }: { returnTo: string }) {
                         </Content>
 
                         <Button
-                            href={`/auth/login?connection=google-oauth2&returnTo=${returnTo}`}
+                            href={`/auth/login?connection=google-oauth2&returnTo=${returnToParam}`}
                             icon={<SiGmail />}
                         >
                             Continue with Google
                         </Button>
+
                         <Button
-                            href={`/auth/login?connection=github&returnTo=${returnTo}`}
+                            href={`/auth/login?connection=github&returnTo=${returnToParam}`}
                             icon={<FaGithubSquare />}
                         >
                             Continue with GitHub
@@ -70,10 +72,4 @@ export default function Login({ returnTo }: { returnTo: string }) {
             </main>
         </>
     );
-}
-
-export async function getServerSideProps(context: GetServerSidePropsContext) {
-    const returnTo = context.query.returnTo;
-
-    return { props: { returnTo: returnTo ?? "/" } };
 }
