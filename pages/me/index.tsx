@@ -17,7 +17,7 @@ export default function Me({ user }: { user: User }) {
                 height={200}
                 alt="profile picture"
             />
-            <h1>hello {user.nickname}</h1>
+            <h1>welcome, {user.nickname}</h1>
         </div>
     );
 }
