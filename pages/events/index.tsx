@@ -1,5 +1,4 @@
 import React from "react";
-
 import Title from "@/components/Title";
 import type { Events, Event } from "@/types";
 import type { GetServerSidePropsContext } from "next";
