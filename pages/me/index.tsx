@@ -60,6 +60,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
         user = currentUser[0];
     }
 
+    console.log(user);
+
     if (session) {
         return { props: { user: user ?? null } };
     }
