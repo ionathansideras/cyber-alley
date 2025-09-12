@@ -8,10 +8,13 @@
     --text-color-secondary: #c6c7c0;
     --text-color-dark: rgb(92, 92, 92);
 
+    --header-height: 14svh;
+
     --title-xl: 100px;
     --title-l: 60px;
     --title-m: 50px;
     --title-s: 40px;
+    --title-xs: 30px;
 
     --text-s: 12px;
     --text-m: 17px;

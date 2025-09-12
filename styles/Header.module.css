@@ -4,7 +4,7 @@
     z-index: 10000;
     background-color: transparent;
     align-items: center;
-    height: 14svh;
+    height: var(----header-height);
     justify-content: space-between;
     max-width: 1900px;
     width: 100%;

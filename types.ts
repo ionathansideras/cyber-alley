@@ -1,4 +1,17 @@
-type Event = { id: number; name: string };
+type Event = {
+    admin_id: number;
+    admins_nickname: string;
+    attendees: number[];
+    begins_at: string;
+    created_at: string;
+    deleted: boolean;
+    description: string;
+    id: number;
+    image: string;
+    link: string;
+    title: string;
+    topics: string[];
+};
 
 type Events = { events: Event[] };
 

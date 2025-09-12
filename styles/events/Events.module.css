@@ -1,0 +1,35 @@
+.eventsContainer {
+    padding: var(--header-height) var(--space-m) var(--space-l) var(--space-m);
+    min-height: calc(100svh - var(--header-height) - var(--space-l));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.eventsContent {
+    display: flex;
+    gap: var(--space-m);
+    width: 100%;
+    margin-top: var(--space-m);
+}
+
+.eventList {
+    width: 80%;
+}
+
+.eventFilters {
+    width: 20%;
+}
+
+@media (max-width: 900px) {
+    .eventsContent {
+        flex-direction: column;
+    }
+    .eventList {
+        width: 100%;
+    }
+
+    .eventFilters {
+        width: 100%;
+    }
+}

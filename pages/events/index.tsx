@@ -1,50 +1,56 @@
 import React from "react";
 import Title from "@/components/Title";
-import type { Events, Event } from "@/types";
+import type { Events } from "@/types";
 import type { GetServerSidePropsContext } from "next";
 import Link from "next/link";
+import { supabase } from "@/lib/supabaseConnection";
+import EventPreview from "@/components/events/EventPreview";
+import styles from "@/styles/events/Events.module.css";
+import Content from "@/components/Content";
 
 export default function Events({ events }: Events) {
     return (
-        <div className="under-development">
+        <main className={styles.eventsContainer}>
             <Title>page under development</Title>
-            {events.map((event) => (
-                <p key={event.id}>{event.name}</p>
-            ))}
-            <Link href={"/events?page=1"}>1</Link>
-            <Link href={"/events?page=2"}>2</Link>
-        </div>
+            <Content>Browse through out our events collection!</Content>
+            <div className={styles.eventsContent}>
+                <div className={styles.eventFilters}>
+                    <Content>filters</Content>
+                </div>
+                <div className={styles.eventList}>
+                    {events.length === 0 && <p>No results found</p>}
+                    {events.map((event) => (
+                        <EventPreview key={event.id} event={event} />
+                    ))}
+                </div>
+            </div>
+        </main>
     );
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
     const page = Number(context.query.page) || 1;
 
-    let content: Event[] = [];
+    const amount = 10;
+    const startIndex = page * 10 - amount;
+    const stopIndex = page * 10;
 
-    if (page === 1) {
-        content = [
-            { id: 1, name: "test1" },
-            { id: 2, name: "test2" },
-        ];
-    } else if (page === 2) {
-        content = [
-            { id: 3, name: "test3" },
-            { id: 4, name: "test4" },
-        ];
-    } else {
-        content = [];
-    }
+    const { data: events, error } = await supabase
+        .from("events")
+        .select("*")
+        .range(startIndex, stopIndex);
 
-    if (content.length <= 0) {
+    if (!events || events.length <= 0 || error) {
         return {
-            notFound: true,
+            props: {
+                events: [],
+            },
         };
     }
 
     return {
         props: {
-            events: content,
+            events: events,
         },
     };
 }
