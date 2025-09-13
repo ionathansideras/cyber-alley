@@ -62,7 +62,7 @@ export default function EventFilters() {
                         />
                     </div>
                     <div className={styles.radio}>
-                        <label htmlFor="oldFirst">old First</label>
+                        <label htmlFor="oldFirst">Old First</label>
                         <input
                             type="radio"
                             name="filter"
