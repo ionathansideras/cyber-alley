@@ -3,6 +3,7 @@ import type { Event } from "@/types";
 import styles from "@/styles/events/EventPreview.module.css";
 import Image from "next/image";
 import Button from "../Button";
+import Gradient from "../Gradient";
 
 function formatDate(dateString: string) {
     return new Date(dateString).toLocaleString("en-US", {
@@ -21,6 +22,7 @@ export default function EventPreview({ event }: { event: Event }) {
 
             <div className={styles.eventPreviewContainer}>
                 <article>
+                    <Gradient top="-150px" left="-100px" />
                     <Image
                         src="/robot-img.png"
                         width={200}

@@ -1,4 +1,4 @@
-import type { GetStaticPropsContext } from "next";
+// import type { GetStaticPropsContext } from "next";
 import Title from "@/components/Title";
 import type { Event } from "@/types";
 
