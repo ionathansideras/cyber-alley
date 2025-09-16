@@ -15,6 +15,7 @@
     transition: all var(--transition-duration);
     margin-left: var(--space-s);
     margin-top: var(--space-s);
+    color: black;
 }
 
 .nav button:hover {
@@ -67,6 +68,10 @@
     justify-content: center;
 }
 
+.backArrow {
+    margin-left: 0 !important;
+}
+
 .backArrow:hover {
     transform: translateX(-5px);
 }
@@ -82,4 +87,9 @@
 
 .disabled:hover {
     transform: none !important;
+}
+
+.nav svg {
+    width: 20px;
+    height: 20px;
 }

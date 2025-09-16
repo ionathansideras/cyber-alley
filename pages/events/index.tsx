@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Title from "@/components/Title";
 import type { Event } from "@/types";
 import type { GetServerSidePropsContext } from "next";
@@ -8,6 +8,8 @@ import styles from "@/styles/events/Events.module.css";
 import Content from "@/components/Content";
 import EventFilters from "@/components/events/EventFilters";
 import Pagination from "@/components/events/Pagination";
+import { useRouter } from "next/router";
+import EventsSkeletonLoader from "@/components/events/EventsSkeletonLoader";
 
 export default function Events({
     events,
@@ -20,6 +22,13 @@ export default function Events({
     totalEvents: number;
     amountPerPage: number;
 }) {
+    const [loader, setLoader] = useState(false);
+    const router = useRouter();
+
+    useEffect(() => {
+        setLoader(false);
+    }, [router]);
+
     return (
         <main className={styles.eventsContainer}>
             <Title>page under development</Title>
@@ -30,13 +39,26 @@ export default function Events({
                 </div>
                 <div className={styles.eventList}>
                     {events.length === 0 && <p>No results found</p>}
-                    {events.map((event) => (
-                        <EventPreview key={event.id} event={event} />
-                    ))}
+
+                    {loader ? (
+                        <>
+                            {Array.from(Array(10)).map((_, index) => (
+                                <EventsSkeletonLoader key={index} />
+                            ))}
+                        </>
+                    ) : (
+                        <>
+                            {events.map((event) => (
+                                <EventPreview key={event.id} event={event} />
+                            ))}
+                        </>
+                    )}
+
                     <Pagination
                         page={page}
                         totalEvents={totalEvents}
                         amountPerPage={amountPerPage}
+                        setLoader={setLoader}
                     />
                 </div>
             </div>
