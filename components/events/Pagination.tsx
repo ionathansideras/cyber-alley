@@ -6,12 +6,12 @@ export default function Pagination({
     page,
     totalEvents,
     amountPerPage,
-    setLoader,
+    setLoading,
 }: {
     page: number;
     totalEvents: number;
     amountPerPage: number;
-    setLoader: React.Dispatch<React.SetStateAction<boolean>>;
+    setLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
     const router = useRouter();
     const pagesBasedOnAmount = Math.ceil(totalEvents / amountPerPage);
@@ -19,7 +19,7 @@ export default function Pagination({
     const pagesArray = Array.from(Array(pagesBasedOnAmount).keys());
 
     function changePage(index: number) {
-        setLoader(true);
+        setLoading(true);
         window.scrollTo({
             top: 0,
         });

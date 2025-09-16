@@ -22,11 +22,11 @@ export default function Events({
     totalEvents: number;
     amountPerPage: number;
 }) {
-    const [loader, setLoader] = useState(false);
+    const [loading, setLoading] = useState(false);
     const router = useRouter();
 
     useEffect(() => {
-        setLoader(false);
+        setLoading(false);
     }, [router]);
 
     return (
@@ -40,7 +40,7 @@ export default function Events({
                 <div className={styles.eventList}>
                     {events.length === 0 && <p>No results found</p>}
 
-                    {loader ? (
+                    {loading ? (
                         <>
                             {Array.from(Array(10)).map((_, index) => (
                                 <EventsSkeletonLoader key={index} />
@@ -58,7 +58,7 @@ export default function Events({
                         page={page}
                         totalEvents={totalEvents}
                         amountPerPage={amountPerPage}
-                        setLoader={setLoader}
+                        setLoading={setLoading}
                     />
                 </div>
             </div>
