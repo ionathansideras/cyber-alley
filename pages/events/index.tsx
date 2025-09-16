@@ -1,14 +1,25 @@
 import React from "react";
 import Title from "@/components/Title";
-import type { Events } from "@/types";
+import type { Event } from "@/types";
 import type { GetServerSidePropsContext } from "next";
 import { supabase } from "@/lib/supabaseConnection";
 import EventPreview from "@/components/events/EventPreview";
 import styles from "@/styles/events/Events.module.css";
 import Content from "@/components/Content";
 import EventFilters from "@/components/events/EventFilters";
+import Pagination from "@/components/events/Pagination";
 
-export default function Events({ events }: Events) {
+export default function Events({
+    events,
+    page,
+    totalEvents,
+    amountPerPage,
+}: {
+    events: Event[];
+    page: number;
+    totalEvents: number;
+    amountPerPage: number;
+}) {
     return (
         <main className={styles.eventsContainer}>
             <Title>page under development</Title>
@@ -22,6 +33,11 @@ export default function Events({ events }: Events) {
                     {events.map((event) => (
                         <EventPreview key={event.id} event={event} />
                     ))}
+                    <Pagination
+                        page={page}
+                        totalEvents={totalEvents}
+                        amountPerPage={amountPerPage}
+                    />
                 </div>
             </div>
         </main>
@@ -32,9 +48,12 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     const page = Number(context.query.page) || 1;
     const filter = context.query.filter;
     let events: Event[] = [];
+    const { count: totalEvents } = await supabase
+        .from("events")
+        .select("*", { count: "exact", head: true });
 
-    const amount = 10;
-    const startIndex = page * 10 - amount;
+    const amountPerPage = 10;
+    const startIndex = page * 10 - amountPerPage;
     const stopIndex = page * 10;
 
     if (!filter || filter === "default") {
@@ -49,6 +68,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
             return {
                 props: {
                     events: [],
+                    page: page,
+                    totalEvents: 0,
+                    amountPerPage,
                 },
             };
         }
@@ -65,6 +87,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
             return {
                 props: {
                     events: [],
+                    page: page,
+                    totalEvents: 0,
+                    amountPerPage,
                 },
             };
         }
@@ -81,6 +106,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
             return {
                 props: {
                     events: [],
+                    page: page,
+                    totalEvents: 0,
+                    amountPerPage,
                 },
             };
         }
@@ -92,7 +120,14 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
             .range(startIndex, stopIndex - 1);
 
         if (error) {
-            return { props: { events: [] } };
+            return {
+                props: {
+                    events: [],
+                    page: page,
+                    totalEvents: 0,
+                    amountPerPage,
+                },
+            };
         }
 
         events = data as Event[];
@@ -101,6 +136,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     return {
         props: {
             events: events,
+            page: page,
+            totalEvents: totalEvents,
+            amountPerPage,
         },
     };
 }

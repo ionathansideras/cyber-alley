@@ -13,8 +13,6 @@ type Event = {
     topics: string[];
 };
 
-type Events = { events: Event[] };
-
 type User = {
     id: string;
     nickname: string;
@@ -26,4 +24,4 @@ type User = {
     events_joined_ids: null | string[];
 };
 
-export type { Event, Events, User };
+export type { Event, User };
