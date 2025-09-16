@@ -9,18 +9,6 @@
     position: relative;
 }
 
-.wrapper > span {
-    position: absolute;
-    right: var(--space-m);
-    top: -10px;
-    width: 210px;
-    height: 20px;
-    background: rgb(74, 74, 74);
-    clip-path: var(--clip-path-bento-3);
-    padding: 2px 10px;
-    z-index: 0;
-}
-
 .eventPreviewContainer article {
     background: rgb(74, 74, 74);
 
