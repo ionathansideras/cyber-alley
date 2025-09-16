@@ -17,6 +17,10 @@ export default function Pagination({
     const pagesArray = Array.from(Array(pagesBasedOnAmount).keys());
 
     function changePage(index: number) {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
         router.replace({
             query: { ...router.query, page: index },
         });

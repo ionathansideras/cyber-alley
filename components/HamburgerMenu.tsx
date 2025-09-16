@@ -40,7 +40,7 @@ function HamburgerMenu({
 }) {
     const burgerRef = useRef<HTMLDivElement | null>(null);
     const { user } = useUser();
-    const [loading, setLoading] = useState(false);
+    // const [loading, setLoading] = useState(false);
 
     function handleOpenHamburger() {
         setOpen((prev) => !prev);
@@ -98,8 +98,8 @@ function HamburgerMenu({
                                     <Button
                                         href="/auth/logout"
                                         aTag
-                                        loading={loading}
-                                        onClick={() => setLoading(true)}
+                                        // loading={loading}
+                                        // onClick={() => setLoading(true)}
                                     >
                                         Log out
                                     </Button>

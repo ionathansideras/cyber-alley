@@ -1,6 +1,7 @@
 import Link from "next/link";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "@/styles/Button.module.css";
+import { useRouter } from "next/router";
 
 export default function Button({
     children,
@@ -19,6 +20,13 @@ export default function Button({
     loading?: boolean;
     aTag?: boolean;
 }) {
+    const [loadingNav, setLoadingNav] = useState(false);
+    const router = useRouter();
+
+    useEffect(() => {
+        setLoadingNav(false);
+    }, [router]);
+
     if (href) {
         if (aTag) {
             // plain <a>
@@ -46,9 +54,9 @@ export default function Button({
                 href={href}
                 className={styles.button}
                 title={title}
-                onClick={onClick}
+                onNavigate={() => setLoadingNav(true)}
             >
-                {loading ? (
+                {loadingNav ? (
                     <span className={styles.loader}></span>
                 ) : (
                     <>
