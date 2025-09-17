@@ -18,6 +18,8 @@ export default function EventFilters({
 
     useEffect(() => {
         setChecked(filterQuery);
+        const prevKeywords = router.query.keywords as string;
+        if (prevKeywords) setKeywords(prevKeywords.replaceAll(",", " "));
     }, []);
 
     function handleAddFilter(e: React.ChangeEvent<HTMLInputElement>) {
@@ -28,19 +30,43 @@ export default function EventFilters({
             query: { ...router.query, filter: e.target.id },
         });
     }
+
+    function handleKeywords() {
+        window.scrollTo({ top: 0 });
+        setLoading(true);
+        const sanitizedKeywords = keywords.replaceAll(" ", ",");
+        router.replace({
+            query: { ...router.query, keywords: sanitizedKeywords },
+        });
+    }
+
     return (
         <section className={styles.eventFiltersContainer}>
             <h4>Filters</h4>
-            <form>
+            <form
+                onSubmit={(e) => {
+                    e.preventDefault();
+                    handleKeywords();
+                }}
+            >
                 <div className={styles.search}>
                     <label htmlFor="keyWords">Key Words</label>
-                    <input
-                        type="text"
-                        id="keyWords"
-                        value={keywords}
-                        onChange={(e) => setKeywords(e.target.value)}
-                        placeholder="Search for Keywords..."
-                    />
+                    <div>
+                        <input
+                            type="text"
+                            id="keyWords"
+                            value={keywords}
+                            onChange={(e) => setKeywords(e.target.value)}
+                            placeholder="Search for Keywords..."
+                        />
+                        <button
+                            type="button"
+                            onClick={handleKeywords}
+                            className={styles.searchButton}
+                        >
+                            Search
+                        </button>
+                    </div>
                 </div>
                 <nav className={styles.nav}>
                     <div className={styles.radio}>
@@ -85,6 +111,26 @@ export default function EventFilters({
                             id="mostFamous"
                             onChange={handleAddFilter}
                             checked={checked === "mostFamous"}
+                        />
+                    </div>
+                    <div className={styles.radio}>
+                        <label htmlFor="AToZ">A to Z</label>
+                        <input
+                            type="radio"
+                            name="filter"
+                            id="AToZ"
+                            onChange={handleAddFilter}
+                            checked={checked === "AToZ"}
+                        />
+                    </div>
+                    <div className={styles.radio}>
+                        <label htmlFor="ZToA">Z to A</label>
+                        <input
+                            type="radio"
+                            name="filter"
+                            id="ZToA"
+                            onChange={handleAddFilter}
+                            checked={checked === "ZToA"}
                         />
                     </div>
                 </nav>

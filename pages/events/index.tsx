@@ -38,7 +38,9 @@ export default function Events({
                     <EventFilters setLoading={setLoading} />
                 </div>
                 <div className={styles.eventList}>
-                    {events.length === 0 && <p>No results found</p>}
+                    {events.length === 0 && (
+                        <Content center>No results found</Content>
+                    )}
 
                     {loading ? (
                         <>
@@ -78,65 +80,98 @@ function returnEmptyProps(page: number, amountPerPage: number) {
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-    const page = Number(context.query.page) || 1;
+    let page = Number(context.query.page) || 1;
     const filter = context.query.filter;
+    const keywords = (context.query.keywords || "") as string;
+    // split by comma, trim spaces, remove empties, normalize case
+    const keywordsArray = keywords
+        .split(",")
+        .map((word) => word.trim().toLowerCase())
+        .filter(Boolean);
+
     let events: Event[] = [];
-    const { count: totalEvents } = await supabase
+
+    let totalEventsQuery = supabase
         .from("events")
-        .select("*", { count: "exact", head: true });
+        .select("*", { count: "exact", head: true })
+        .gte("begins_at", new Date().toISOString());
+
+    if (totalEventsQuery && keywordsArray.length > 0) {
+        totalEventsQuery = totalEventsQuery.overlaps("topics", keywordsArray);
+    }
+
+    const { count: totalEvents } = await totalEventsQuery;
 
     const amountPerPage = 10;
     const startIndex = page * 10 - amountPerPage;
     const stopIndex = page * 10;
 
+    // redirect to page 1 if the current page is not supported in the new data that we get
+    if (
+        (totalEvents! > 0 || totalEvents === 0) &&
+        Math.ceil(totalEvents! / amountPerPage) < page &&
+        page != 1
+    ) {
+        return {
+            redirect: {
+                destination: `/events?page=1${
+                    context.query.filter
+                        ? "&filter=" + context.query.filter
+                        : ""
+                }${
+                    context.query.keywords
+                        ? "&keywords=" + context.query.keywords
+                        : ""
+                }`,
+                permanent: false,
+            },
+        };
+    }
+
+    let query = supabase.from("events").select("*");
+
     if (!filter || filter === "default") {
-        const { data, error } = await supabase
-            .from("events")
-            .select("*")
+        query = query
+            .gte("begins_at", new Date().toISOString())
             .range(startIndex, stopIndex - 1);
-
-        events = data as Event[];
-
-        if (error) {
-            returnEmptyProps(page, amountPerPage);
-        }
     } else if (filter === "newFirst") {
-        const { data, error } = await supabase
-            .from("events")
-            .select("*")
+        query = query
+            .gte("begins_at", new Date().toISOString())
             .order("created_at", { ascending: false })
             .range(startIndex, stopIndex - 1);
-
-        events = data as Event[];
-
-        if (error) {
-            returnEmptyProps(page, amountPerPage);
-        }
     } else if (filter === "oldFirst") {
-        const { data, error } = await supabase
-            .from("events")
-            .select("*")
+        query = query
+            .gte("begins_at", new Date().toISOString())
             .order("created_at", { ascending: true })
             .range(startIndex, stopIndex - 1);
-
-        events = data as Event[];
-
-        if (error) {
-            returnEmptyProps(page, amountPerPage);
-        }
     } else if (filter === "mostFamous") {
-        const { data, error } = await supabase
-            .from("events")
-            .select("*")
+        query = query
+            .gte("begins_at", new Date().toISOString())
             .order("attendees_count", { ascending: false })
             .range(startIndex, stopIndex - 1);
-
-        if (error) {
-            returnEmptyProps(page, amountPerPage);
-        }
-
-        events = data as Event[];
+    } else if (filter === "AToZ") {
+        query = query
+            .gte("begins_at", new Date().toISOString())
+            .order("title", { ascending: true })
+            .range(startIndex, stopIndex - 1);
+    } else if (filter === "ZToA") {
+        query = query
+            .gte("begins_at", new Date().toISOString())
+            .order("title", { ascending: false })
+            .range(startIndex, stopIndex - 1);
     }
+
+    if (query && keywordsArray.length > 0) {
+        query.overlaps("topics", keywordsArray);
+    }
+
+    const { data, error } = await query;
+
+    if (error) {
+        returnEmptyProps(page, amountPerPage);
+    }
+
+    events = data as Event[];
 
     return {
         props: {
