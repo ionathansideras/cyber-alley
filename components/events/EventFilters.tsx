@@ -1,8 +1,8 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState, memo } from "react";
 import styles from "@/styles/events/EventFilters.module.css";
 import { useRouter } from "next/router";
 
-export default function EventFilters({
+function EventFilters({
     setLoading,
 }: {
     setLoading: React.Dispatch<React.SetStateAction<boolean>>;
@@ -12,9 +12,7 @@ export default function EventFilters({
     const [keywords, setKeywords] = useState("");
     const [checked, setChecked] = useState<string | null>(null);
 
-    const filterQuery = useMemo(() => {
-        return router.query.filter as string;
-    }, [router.query.filter]);
+    const filterQuery = router.query.filter as string;
 
     useEffect(() => {
         setChecked(filterQuery);
@@ -144,3 +142,5 @@ export default function EventFilters({
         </section>
     );
 }
+
+export default memo(EventFilters);

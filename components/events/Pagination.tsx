@@ -1,8 +1,8 @@
-import React from "react";
+import React, { memo } from "react";
 import { useRouter } from "next/router";
 import styles from "@/styles/events/Pagination.module.css";
 
-export default function Pagination({
+function Pagination({
     page,
     totalEvents,
     amountPerPage,
@@ -136,3 +136,5 @@ export default function Pagination({
         </nav>
     );
 }
+
+export default memo(Pagination);

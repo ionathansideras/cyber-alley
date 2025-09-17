@@ -83,15 +83,19 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     const page = Number(context.query.page) || 1;
     const filter = context.query.filter;
     const keywords = (context.query.keywords || "") as string;
+    let events: Event[] = [];
+    const amountPerPage = 10;
+    const startIndex = page * 10 - amountPerPage;
+    const stopIndex = page * 10;
+
     const keywordsReduced =
         keywords.length > 50 ? keywords.slice(0, 50) : keywords;
+
     // split by comma, trim spaces, remove empties, normalize case
     const keywordsArray = keywordsReduced
         .split(",")
         .map((word) => word.trim().toLowerCase())
         .filter(Boolean);
-
-    let events: Event[] = [];
 
     let totalEventsQuery = supabase
         .from("events")
@@ -103,10 +107,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     }
 
     const { count: totalEvents } = await totalEventsQuery;
-
-    const amountPerPage = 10;
-    const startIndex = page * 10 - amountPerPage;
-    const stopIndex = page * 10;
 
     // redirect to page 1 if the current page is not supported in the new data that we get
     if (

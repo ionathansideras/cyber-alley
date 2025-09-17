@@ -1,7 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 import styles from "@/styles/events/EventsSkeletonLoader.module.css";
 
-export default function EventsSkeletonLoader() {
+function EventsSkeletonLoader() {
     return (
         <section className={styles.wrapper}>
             <div className={styles.eventPreviewContainer}>
@@ -10,3 +10,5 @@ export default function EventsSkeletonLoader() {
         </section>
     );
 }
+
+export default memo(EventsSkeletonLoader);
