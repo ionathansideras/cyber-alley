@@ -35,7 +35,7 @@ export default function Events({
             <Content>Browse through out our events collection!</Content>
             <div className={styles.eventsContent}>
                 <div className={styles.eventFilters}>
-                    <EventFilters />
+                    <EventFilters setLoading={setLoading} />
                 </div>
                 <div className={styles.eventList}>
                     {events.length === 0 && <p>No results found</p>}
@@ -66,6 +66,17 @@ export default function Events({
     );
 }
 
+function returnEmptyProps(page: number, amountPerPage: number) {
+    return {
+        props: {
+            events: [],
+            page: page,
+            totalEvents: 0,
+            amountPerPage,
+        },
+    };
+}
+
 export async function getServerSideProps(context: GetServerSidePropsContext) {
     const page = Number(context.query.page) || 1;
     const filter = context.query.filter;
@@ -87,14 +98,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
         events = data as Event[];
 
         if (error) {
-            return {
-                props: {
-                    events: [],
-                    page: page,
-                    totalEvents: 0,
-                    amountPerPage,
-                },
-            };
+            returnEmptyProps(page, amountPerPage);
         }
     } else if (filter === "newFirst") {
         const { data, error } = await supabase
@@ -106,14 +110,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
         events = data as Event[];
 
         if (error) {
-            return {
-                props: {
-                    events: [],
-                    page: page,
-                    totalEvents: 0,
-                    amountPerPage,
-                },
-            };
+            returnEmptyProps(page, amountPerPage);
         }
     } else if (filter === "oldFirst") {
         const { data, error } = await supabase
@@ -125,14 +122,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
         events = data as Event[];
 
         if (error) {
-            return {
-                props: {
-                    events: [],
-                    page: page,
-                    totalEvents: 0,
-                    amountPerPage,
-                },
-            };
+            returnEmptyProps(page, amountPerPage);
         }
     } else if (filter === "mostFamous") {
         const { data, error } = await supabase
@@ -142,14 +132,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
             .range(startIndex, stopIndex - 1);
 
         if (error) {
-            return {
-                props: {
-                    events: [],
-                    page: page,
-                    totalEvents: 0,
-                    amountPerPage,
-                },
-            };
+            returnEmptyProps(page, amountPerPage);
         }
 
         events = data as Event[];

@@ -14,9 +14,8 @@ export default function Pagination({
     setLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
     const router = useRouter();
-    const pagesBasedOnAmount = Math.ceil(totalEvents / amountPerPage);
-
-    const pagesArray = Array.from(Array(pagesBasedOnAmount).keys());
+    const totalPages = Math.ceil(totalEvents / amountPerPage);
+    const pagesArray = Array.from(Array(totalPages));
 
     function changePage(index: number) {
         setLoading(true);
@@ -50,88 +49,77 @@ export default function Pagination({
                 </svg>
             </button>
             {pagesArray.map((_, index) => {
-                const indexRelativeToPages = index + 1;
+                // making the index start from 1 to N to match the pages format
+                const pageNumber = index + 1;
 
-                // show always the number 1 page
-                if (indexRelativeToPages === 1) {
+                // show always the first page
+                if (pageNumber === 1) {
                     return (
                         <button
                             key={index}
-                            onClick={() => changePage(index + 1)}
+                            onClick={() => changePage(pageNumber)}
                             className={`${
-                                page === index + 1 ? styles.selected : ""
+                                page === pageNumber ? styles.selected : ""
                             }`}
                         >
-                            {index + 1}
+                            {pageNumber}
                         </button>
                     );
                 }
-
                 // show the dots if the index is less 3 than the selected page
-                if (indexRelativeToPages === page - 3) {
+                else if (pageNumber === page - 3) {
                     return (
                         <span key={index} className={styles.spanPrev}></span>
                     );
                 }
-
                 // show 2 pages before and after the index it will be like this: 2,3,[4],5,6
-                if (
-                    // -2 pages
-                    indexRelativeToPages >= page - 2 &&
-                    // +2 pages
-                    indexRelativeToPages <= page + 2 &&
-                    // don't run for the first page
-                    indexRelativeToPages > 1 &&
-                    // don't run for the last page
-                    indexRelativeToPages < pagesBasedOnAmount
+                else if (
+                    // show -2 pages
+                    pageNumber >= page - 2 &&
+                    // show +2 pages
+                    pageNumber <= page + 2
                 ) {
                     return (
                         <button
                             key={index}
-                            onClick={() => changePage(index + 1)}
+                            onClick={() => changePage(pageNumber)}
                             className={`${
-                                page === index + 1 ? styles.selected : ""
+                                page === pageNumber ? styles.selected : ""
                             }`}
                         >
-                            {index + 1}
+                            {pageNumber}
                         </button>
                     );
                 }
-
-                // show dots if the index is one less than the pagesBasedOnAmount
-                if (indexRelativeToPages === pagesBasedOnAmount - 1) {
+                // show dots if the index is one less than the totalPages
+                else if (pageNumber === totalPages - 1) {
                     return (
                         <span key={index} className={styles.spanNext}></span>
                     );
                 }
-
                 // show always the last page
-                if (indexRelativeToPages === pagesBasedOnAmount) {
+                else if (pageNumber === totalPages) {
                     return (
                         <button
                             key={index}
-                            onClick={() => changePage(index + 1)}
+                            onClick={() => changePage(pageNumber)}
                             className={`${
-                                page === index + 1 ? styles.selected : ""
+                                page === pageNumber ? styles.selected : ""
                             }`}
                         >
-                            {index + 1}
+                            {pageNumber}
                         </button>
                     );
                 }
             })}
             <button
                 title="Go to next Page"
-                disabled={page >= pagesBasedOnAmount}
+                disabled={page >= totalPages}
                 className={`${styles.nextArrow} ${
-                    page >= pagesBasedOnAmount ? styles.disabled : ""
+                    page >= totalPages ? styles.disabled : ""
                 }`}
                 onClick={() =>
-                    changePage(
-                        page < pagesBasedOnAmount
-                            ? page + 1
-                            : pagesBasedOnAmount
-                    )
+                    changePage(page < totalPages ? page + 1 : totalPages)
                 }
             >
                 <svg

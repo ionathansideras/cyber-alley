@@ -2,7 +2,11 @@ import React, { useEffect, useMemo, useState } from "react";
 import styles from "@/styles/events/EventFilters.module.css";
 import { useRouter } from "next/router";
 
-export default function EventFilters() {
+export default function EventFilters({
+    setLoading,
+}: {
+    setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
     const router = useRouter();
 
     const [keywords, setKeywords] = useState("");
@@ -17,6 +21,8 @@ export default function EventFilters() {
     }, []);
 
     function handleAddFilter(e: React.ChangeEvent<HTMLInputElement>) {
+        window.scrollTo({ top: 0 });
+        setLoading(true);
         setChecked(e.target.id);
         router.replace({
             query: { ...router.query, filter: e.target.id },
