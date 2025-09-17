@@ -22,6 +22,12 @@ export default function EventFilters({
         if (prevKeywords) setKeywords(prevKeywords.replaceAll(",", " "));
     }, []);
 
+    useEffect(() => {
+        if (keywords.length > 50) {
+            setKeywords(keywords.slice(0, 50));
+        }
+    }, [keywords]);
+
     function handleAddFilter(e: React.ChangeEvent<HTMLInputElement>) {
         window.scrollTo({ top: 0 });
         setLoading(true);

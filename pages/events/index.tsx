@@ -83,8 +83,10 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     let page = Number(context.query.page) || 1;
     const filter = context.query.filter;
     const keywords = (context.query.keywords || "") as string;
+    const keywordsReduced =
+        keywords.length > 50 ? keywords.slice(0, 50) : keywords;
     // split by comma, trim spaces, remove empties, normalize case
-    const keywordsArray = keywords
+    const keywordsArray = keywordsReduced
         .split(",")
         .map((word) => word.trim().toLowerCase())
         .filter(Boolean);
