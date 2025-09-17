@@ -80,7 +80,7 @@ function returnEmptyProps(page: number, amountPerPage: number) {
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-    let page = Number(context.query.page) || 1;
+    const page = Number(context.query.page) || 1;
     const filter = context.query.filter;
     const keywords = (context.query.keywords || "") as string;
     const keywordsReduced =

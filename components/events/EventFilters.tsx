@@ -20,7 +20,7 @@ export default function EventFilters({
         setChecked(filterQuery);
         const prevKeywords = router.query.keywords as string;
         if (prevKeywords) setKeywords(prevKeywords.replaceAll(",", " "));
-    }, []);
+    }, [filterQuery, router.query.keywords]);
 
     useEffect(() => {
         if (keywords.length > 50) {

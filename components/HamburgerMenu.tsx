@@ -4,7 +4,6 @@ import {
     type Dispatch,
     type SetStateAction,
     memo,
-    useState,
 } from "react";
 import styles from "@/styles/HamburgerMenu.module.css";
 import Gradient from "./Gradient";
