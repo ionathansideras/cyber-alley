@@ -30,6 +30,11 @@
         flex-direction: column;
         gap: var(--space-l);
     }
+
+    .eventsContainer h2 {
+        text-align: center;
+    }
+
     .eventList {
         width: 100%;
     }
