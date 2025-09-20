@@ -59,8 +59,8 @@ export default function Events({
                 />
             </Head>
             <main className={styles.eventsContainer}>
-                <Title>page under development</Title>
-                <Content>Browse through out our events collection!</Content>
+                <Title>Browse through out our events</Title>
+                <Content>And filter based on your preferences</Content>
                 <div className={styles.eventsContent}>
                     <div className={styles.eventFilters}>
                         <EventFilters setLoading={setLoading} />

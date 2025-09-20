@@ -24,7 +24,7 @@ export default function EventPreview({ event }: { event: Event }) {
                 <article>
                     <Gradient top="-150px" left="-100px" />
                     <Image
-                        src="/robot-img.png"
+                        src={`https://iogzrhkgbymyikzgdynf.supabase.co/storage/v1/object/public/bucket/event-image-${event.id}.webp`}
                         width={200}
                         height={200}
                         alt="event image"
