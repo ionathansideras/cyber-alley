@@ -34,7 +34,7 @@ export default function Events({
     return (
         <>
             <Head>
-                <title>{totalEvents} Events - Cyber Alley</title>
+                <title>{`${totalEvents} Events - Cyber Alley`}</title>
                 <meta
                     name="description"
                     content="Cyber Alley is a community-driven platform for developers to discover, host, and join tech events. Connect, learn, and build the future together—organize meetups, join workshops, and collaborate with innovators worldwide."
