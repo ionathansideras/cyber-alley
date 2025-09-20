@@ -61,9 +61,10 @@ function EventFilters({
                             id="keyWords"
                             value={keywords}
                             onChange={(e) => setKeywords(e.target.value)}
-                            placeholder="Search for Keywords..."
+                            placeholder="Ex: HTML Frontend"
                         />
                         <button
+                            title="Click to search based on specific keywords"
                             type="button"
                             onClick={handleKeywords}
                             className={styles.searchButton}

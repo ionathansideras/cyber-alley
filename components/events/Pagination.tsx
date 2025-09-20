@@ -56,6 +56,7 @@ function Pagination({
                 if (pageNumber === 1) {
                     return (
                         <button
+                            title={`Navigate to ${pageNumber}th page `}
                             key={index}
                             onClick={() => changePage(pageNumber)}
                             className={`${
@@ -81,6 +82,7 @@ function Pagination({
                 ) {
                     return (
                         <button
+                            title={`Navigate to ${pageNumber}th page `}
                             key={index}
                             onClick={() => changePage(pageNumber)}
                             className={`${
@@ -101,6 +103,7 @@ function Pagination({
                 else if (pageNumber === totalPages) {
                     return (
                         <button
+                            title={`Navigate to ${pageNumber}th page `}
                             key={index}
                             onClick={() => changePage(pageNumber)}
                             className={`${

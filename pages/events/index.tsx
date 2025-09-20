@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Head from "next/head";
 import Title from "@/components/Title";
 import type { Event } from "@/types";
 import type { GetServerSidePropsContext } from "next";
@@ -10,6 +11,7 @@ import EventFilters from "@/components/events/EventFilters";
 import Pagination from "@/components/events/Pagination";
 import { useRouter } from "next/router";
 import EventsSkeletonLoader from "@/components/events/EventsSkeletonLoader";
+import { URL } from "@/constants";
 
 export default function Events({
     events,
@@ -30,41 +32,71 @@ export default function Events({
     }, [router]);
 
     return (
-        <main className={styles.eventsContainer}>
-            <Title>page under development</Title>
-            <Content>Browse through out our events collection!</Content>
-            <div className={styles.eventsContent}>
-                <div className={styles.eventFilters}>
-                    <EventFilters setLoading={setLoading} />
-                </div>
-                <div className={styles.eventList}>
-                    {events.length === 0 && (
-                        <Content center>No results found</Content>
-                    )}
+        <>
+            <Head>
+                <title>Events - Cyber Alley</title>
+                <meta
+                    name="description"
+                    content="Cyber Alley is a community-driven platform for developers to discover, host, and join tech events. Connect, learn, and build the future together—organize meetups, join workshops, and collaborate with innovators worldwide."
+                />
+                {/* Open Graph (Facebook, LinkedIn, etc.) */}
+                <meta property="og:title" content="Events - Cyber Alley" />
+                <meta
+                    property="og:description"
+                    content="Cyber Alley is a community-driven platform for developers to discover, host, and join tech events. Connect, learn, and build the future together—organize meetups, join workshops, and collaborate with innovators worldwide."
+                />
+                <meta property="og:url" content={URL + "events"} />
+                <meta property="og:type" content="website" />
+                {/* Twitter Card */}
+                <meta
+                    name="twitter:card"
+                    content="Cyber Alley is a community-driven platform for developers to discover, host, and join tech events. Connect, learn, and build the future together—organize meetups, join workshops, and collaborate with innovators worldwide."
+                />
+                <meta name="twitter:title" content="Events - Cyber Alley" />
+                <meta
+                    name="twitter:description"
+                    content="Discover, host, and join developer events worldwide. Connect, learn, and build the future together on Cyber Alley."
+                />
+            </Head>
+            <main className={styles.eventsContainer}>
+                <Title>page under development</Title>
+                <Content>Browse through out our events collection!</Content>
+                <div className={styles.eventsContent}>
+                    <div className={styles.eventFilters}>
+                        <EventFilters setLoading={setLoading} />
+                    </div>
+                    <div className={styles.eventList}>
+                        {events.length === 0 && (
+                            <Content center>No results found</Content>
+                        )}
 
-                    {loading ? (
-                        <>
-                            {Array.from(Array(10)).map((_, index) => (
-                                <EventsSkeletonLoader key={index} />
-                            ))}
-                        </>
-                    ) : (
-                        <>
-                            {events.map((event) => (
-                                <EventPreview key={event.id} event={event} />
-                            ))}
-                        </>
-                    )}
+                        {loading ? (
+                            <>
+                                {Array.from(Array(10)).map((_, index) => (
+                                    <EventsSkeletonLoader key={index} />
+                                ))}
+                            </>
+                        ) : (
+                            <>
+                                {events.map((event) => (
+                                    <EventPreview
+                                        key={event.id}
+                                        event={event}
+                                    />
+                                ))}
+                            </>
+                        )}
 
-                    <Pagination
-                        page={page}
-                        totalEvents={totalEvents}
-                        amountPerPage={amountPerPage}
-                        setLoading={setLoading}
-                    />
+                        <Pagination
+                            page={page}
+                            totalEvents={totalEvents}
+                            amountPerPage={amountPerPage}
+                            setLoading={setLoading}
+                        />
+                    </div>
                 </div>
-            </div>
-        </main>
+            </main>
+        </>
     );
 }
 

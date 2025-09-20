@@ -36,7 +36,10 @@ export default function EventPreview({ event }: { event: Event }) {
 
                         <div className={styles.join}>
                             <p>{event.attendees.length} has joined</p>
-                            <Button href={`/events/${event.id}`}>
+                            <Button
+                                href={`/events/${event.id}`}
+                                title="Click to see more about this event"
+                            >
                                 Take a look
                             </Button>
                         </div>
